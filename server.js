@@ -10,6 +10,21 @@ const express = require("express");
 const morgan = require("morgan");
 const config = require("config");
 const app = express();
+
+import TypeRoutes from './routes/Type.js';
+import PoubelleRoute from './routes/Poubelle.js';
+import ZoneRoutes from './routes/Zone.js';
+
+
+
+// Préfixe de route et débit pour les routes Type
+app.use('/types', TypeRoutes);
+
+// Préfixe de route et débit pour les routes Zone
+app.use('/zones', ZoneRoutes);
+
+// Préfixe de route et débit pour les routes Poubelle
+app.use('/poubelles', PoubelleRoute);
 //#endregion
 
 //#region middlewares
@@ -26,6 +41,8 @@ if (app.get("env") === "development") {
 
 // custom middlewares
 // if you have any custome middlewares, please put it here
+
+
 
 mongoose
   .connect(config.get('DatabaseConnectionString'))
