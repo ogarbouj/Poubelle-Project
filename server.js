@@ -16,6 +16,7 @@ import config from "config";
 import cors from 'cors';
 import morgan from 'morgan';
 
+import userRoutes from "./Routes/userRoute.js";
 import OffrePromotionelleRoutes from './routes/offrePromotionelleRoute.js';
 import OffrerecyclageRoutes from './routes/offreRecyclageRoute.js';
 
@@ -38,6 +39,7 @@ app.use("/candidat", candidat);
 
 app.use('/OffrePromotionelle', OffrePromotionelleRoutes);
 app.use('/Offrerecyclage', OffrerecyclageRoutes );
+app.use("/user",userRoutes);
 //#endregion
 
 //#region Init DataBase Connection Section
