@@ -15,6 +15,10 @@ import ZoneRoutes from "./routes/zoneRoute.js";
 import config from "config";
 import cors from 'cors';
 import morgan from 'morgan';
+
+import OffrePromotionelleRoutes from './routes/offrePromotionelleRoute.js';
+import OffrerecyclageRoutes from './routes/offreRecyclageRoute.js';
+
 //#endregion
 
 const app = express();
@@ -31,6 +35,9 @@ app.use("/poubelles", PoubelleRoute);
 
 app.use("/appelOffre", appelOffre);
 app.use("/candidat", candidat);
+
+app.use('/OffrePromotionelle', OffrePromotionelleRoutes);
+app.use('/Offrerecyclage', OffrerecyclageRoutes );
 //#endregion
 
 //#region Init DataBase Connection Section

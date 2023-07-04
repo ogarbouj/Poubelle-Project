@@ -1,4 +1,6 @@
 {
-    "API_Name": "E-Waste Main API", 
-    "DatabaseConnectionString" : "mongodb://127.0.0.1:27017/E-Waste"
+    "API_Name": "E-Waste Main API",
+    "DatabaseConnectionString": "mongodb://127.0.0.1:27017/E-Waste",
+    "KonnectApiKey": "64a490d144e0af4e2ef70a77:dSGyOx2AMocdGkXDLZFgLf",
+    "KonnectWalletIdKey": "64a490d144e0af4e2ef70a7a"
 }
