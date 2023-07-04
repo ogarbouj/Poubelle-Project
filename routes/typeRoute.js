@@ -2,7 +2,7 @@ import express from "express";
 
 
 
-import { createType, getAllTypes, getTypeById, updateType, deleteType } from "../controllers/Type.js";
+import { createType, getAllTypes, getTypeById, updateType, deleteType } from "../controllers/typeController.js";
 
 const router = express.Router(); 
 router.post('/', createType);

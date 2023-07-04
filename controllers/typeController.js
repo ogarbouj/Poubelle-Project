@@ -1,10 +1,6 @@
-
-
-
-
 import Type from "../entities/Type.js";
 
-// Create a new type
+//#region createType
 export function createType(req, res) {
   const { nom, description } = req.body;
 
@@ -21,8 +17,9 @@ export function createType(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Get all types
+//#region getAllTypes
 export function getAllTypes(req, res) {
   Type.find()
     .then((types) => {
@@ -32,8 +29,9 @@ export function getAllTypes(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Get a type by ID
+//#region getTypeById
 export function getTypeById(req, res) {
   const typeId = req.params.id;
 
@@ -48,8 +46,9 @@ export function getTypeById(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Update a type
+//#region updateType
 export function updateType(req, res) {
   const typeId = req.params.id;
   const { nom, description } = req.body;
@@ -69,8 +68,9 @@ export function updateType(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Delete a type
+//#region deleteType
 export function deleteType(req, res) {
   const typeId = req.params.id;
 
@@ -85,3 +85,4 @@ export function deleteType(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion

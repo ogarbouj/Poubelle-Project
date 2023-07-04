@@ -1,22 +1,7 @@
 import Zone from "../entities/Zone.js";
-
-import mongoose from 'mongoose';
-
 import axios from 'axios';
 
-import googlemaps from 'googlemaps';
-
-
-
-
-
-
-
-
-
-
-
-// Create a new zone
+//#region createZone
 export function createZone(req, res) {
   const { nom, latitude, longitude } = req.body;
 
@@ -45,8 +30,9 @@ export function getAllZones(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Get a zone by ID
+//#region getZoneById
 export function getZoneById(req, res) {
   const zoneId = req.params.id;
 
@@ -61,8 +47,9 @@ export function getZoneById(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-// Update a zone
+//#region updateZone
 export function updateZone(req, res) {
   const zoneId = req.params.id;
   const { nom, latitude, longitude } = req.body;
@@ -82,9 +69,9 @@ export function updateZone(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-
-// Delete a zone
+//#region updateZone
 export function deleteZone(req, res) {
   const zoneId = req.params.id;
 
@@ -99,45 +86,9 @@ export function deleteZone(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
-
-
-
-
-
-/*
-
-export function findZonesNearby(req, res) {
-  const { latitude, longitude, radius } = req.query;
-
-  // Vérification des paramètres requis
-  if (!latitude || !longitude || !radius) {
-    return res.status(400).json({ message: 'Missing required parameters' });
-  }
-  // Conversion des valeurs en nombres
-  const lat = parseFloat(latitude); // Conserver en tant que float
-  const lng = parseFloat(longitude);
-  const rad = parseFloat(radius);
-
-  // Requête de recherche des zones à proximité
-  Zone.find({
-    location: {
-      $nearSphere: {
-        $geometry: {
-          type: 'Point',
-          coordinates: [lng, lat], // L'ordre est [longitude, latitude]
-        },
-        $maxDistance: rad, // En mètres
-      },
-    },
-  })
-    .then((zones) => {
-      res.json(zones);
-    })
-    .catch((error) => {
-      res.status(500).json({ error: error.message });
-    });
-}*/
-
+//#endregion
+ 
+//#region findZonesNearby
 export function findZonesNearby(req, res) {
   const { latitude, longitude, radius } = req.query;
 
@@ -172,15 +123,9 @@ export function findZonesNearby(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
+//#endregion
 
-
-
-
-
-
-
-
-
+//#region addZoneWithCoordinates
 export function addZoneWithCoordinates(req, res) {
   const { nom, adresse } = req.body;
 
@@ -211,4 +156,4 @@ export function addZoneWithCoordinates(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
-
+//#endregion

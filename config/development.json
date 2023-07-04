@@ -1,4 +1,4 @@
 {
     "API_Name": "E-Waste Main API -- Dev" , 
-    "DatabaseConnectionString" : "{PLEASE PUT HERE YOUR DATABASE URI LINK}"
+    "DatabaseConnectionString" : "mongodb://127.0.0.1:27017/E-Waste"
 }
