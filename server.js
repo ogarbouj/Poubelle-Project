@@ -13,10 +13,14 @@ import TypeRoutes from "./routes/typeRoute.js";
 import PoubelleRoute from "./routes/poubelleRoute.js";
 import ZoneRoutes from "./routes/zoneRoute.js";
 import config from "config";
+import cors from 'cors';
+import morgan from 'morgan';
 //#endregion
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+app.use(morgan('dev'));
 app.use(notFoundError);
 app.use(errorHandler);
 
