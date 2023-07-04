@@ -1,7 +1,8 @@
-/*
- * you can run the project by simply typing this command below!
- * nodemon server.js
- */
+import express from 'express'
+import mongoose from 'mongoose'
+import appelOffre from './routes/appelOffre.route.js'
+import candidat from './routes/candidat.route.js'
+import { notFoundError, errorHandler } from './middlewares/error-handler.js'
 
 //#region Declaration packages
 const debug = require("debug");
@@ -27,32 +28,33 @@ app.use('/zones', ZoneRoutes);
 app.use('/poubelles', PoubelleRoute);
 //#endregion
 
-//#region middlewares
-app.use(express.json());
-app.use(express.static("public"));
 
-if (app.get("env") === "development") {
-  // morgan is a loggin middleware
-  app.use(morgan("dev"));
-  debug("Morgan Enabled");
-}
-
-//#endregion
-
-// custom middlewares
-// if you have any custome middlewares, please put it here
+const app = express()
+const hostname = '127.0.0.1'
+const port = process.env.PORT||9090
+const dataBase = "newProject"
 
 
 
 mongoose
-  .connect(config.get('DatabaseConnectionString'))
-  .then(() => debug('Connected to MongoDB database'))
-  .catch((err) => debug(`Could not connect to the database`, err));
+ .connect(`mongodb://127.0.0.1:27017/${dataBase}`)
+ .then(()=>{
+    console.log(`Connected to Database ${dataBase}`)
+ })
+ .catch(err=>{
+    console.log(err)
+ })
 
-// PORT
-const port = process.env.PORT || 3000;
+ app.use(express.json());
+ app.use('/appelOffre',appelOffre)
+ app.use('/candidat',candidat)
+ // Utiliser le middleware de routes introuvables
+app.use(notFoundError);
+// Utiliser le middleware gestionnaire d'erreurs
+app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`App Name: ${config.get("API_Name")}`);
-  console.log(`Listening on port ${port}`);
-});
+ 
+
+ app.listen(port,hostname,()=>{
+    console.log(`Server running at http://${hostname}:${port}`)
+})
