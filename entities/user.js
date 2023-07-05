@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
 import pkg from "validator";
-const {isEmail}=pkg
+const { isEmail } = pkg;
 const rolesEnum = Object.freeze({
-  ADMIN: 'admin',
-  USER: 'user',
-  COLLECT: 'collect',
-  ENTREPRISE: 'entreprise',
-  RECYCLEUR: 'recycleur'
+  ADMIN: "admin",
+  USER: "user",
+  COLLECT: "collect",
+  ENTREPRISE: "entreprise",
+  RECYCLEUR: "recycleur",
 });
 
 const schemaUser = new Schema(
@@ -29,7 +29,7 @@ const schemaUser = new Schema(
       type: String,
       required: true,
       validate: [isEmail],
-      unique : true,
+      unique: true,
     },
     pwd: {
       type: String,
@@ -39,17 +39,16 @@ const schemaUser = new Schema(
       type: String,
       required: false,
     },
-role: {
+    role: {
       type: String,
       enum: Object.values(rolesEnum),
       default: rolesEnum.USER,
     },
-    
 
     verified: {
       type: Boolean,
-      
-      default:false
+
+      default: false,
     },
 
     langitude: {
@@ -70,20 +69,18 @@ schemaUser.pre("save", async function (next) {
   next();
 });
 // decrypt le login et verfiy if user existe
-schemaUser.statics.login = async function (email, pwd)
- {
-
+schemaUser.statics.login = async function (email, pwd) {
   const user = await this.findOne({ email });
- 
+
   if (user) {
-      const auth = await bcrypt.compare(pwd, user.pwd);
-    console.log(auth)
-      if (auth) {
-          return user;
-        }
-        throw Error('incorrect password');
+    const auth = await bcrypt.compare(pwd, user.pwd);
+    console.log(auth);
+    if (auth) {
+      return user;
     }
-    throw Error('incorrect email')
+    throw Error("incorrect password");
+  }
+  throw Error("incorrect email");
 };
 
 export default model("User", schemaUser);

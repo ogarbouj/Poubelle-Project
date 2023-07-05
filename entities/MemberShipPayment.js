@@ -6,7 +6,6 @@ const memberShipPaymentSchema = new Schema({
   date: {
     type: Date,
     required: true,
-    default: Date.UTC
   },
   thirdPartyPayment:{
     type: String, 
@@ -29,12 +28,12 @@ const memberShipPaymentSchema = new Schema({
     enum: [ 'None', 'Pending', 'Success', 'Cancelled', 'Failed' ],
     default: 'None'
   },
-  membership: {
+  membershipId: {
     type: Schema.Types.ObjectId,
     ref: 'Membership',
     required: true
   },
-  invoice: {
+  invoiceId: {
     type: Schema.Types.ObjectId,
     ref: 'InvoiceServiceProvided',
     required: false

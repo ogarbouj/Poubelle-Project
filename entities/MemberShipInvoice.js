@@ -38,7 +38,6 @@ const memberShipInvoiceSchema = new Schema({
   date: {
     type: Date,
     require: false,
-    default: Date.UTC
   },
 });
 

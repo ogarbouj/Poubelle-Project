@@ -6,20 +6,19 @@ const memberShipSchema = new Schema({
   date: {
     type: Date,
     require: false,
-    default: Date.UTC
   },
   finalPrice: {
     type: Number,
     require: false,
   },
-  membership: {
-    type: Schema.Types.ObjectId,
-    ref: "MemberShipPayment",
-    required: false,
-  },
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
+    required: true,
+  },
+  offreRecyclagId: {
+    type: Schema.Types.ObjectId,
+    ref: "offrerecyclage",
     required: true,
   },
 });

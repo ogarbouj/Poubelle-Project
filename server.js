@@ -13,27 +13,29 @@ import TypeRoutes from "./routes/typeRoute.js";
 import PoubelleRoute from "./routes/poubelleRoute.js";
 import ZoneRoutes from "./routes/zoneRoute.js";
 import config from "config";
-import cors from 'cors';
-import morgan from 'morgan';
+import cors from "cors";
+import morgan from "morgan";
 
-import userRoutes from "./routes/userRoute.js"
-import OffrePromotionelleRoutes from './routes/offrePromotionelleRoute.js';
-import OffrerecyclageRoutes from './routes/offreRecyclageRoute.js';
+import userRoutes from "./routes/userRoute.js";
+import OffrePromotionelleRoutes from "./routes/offrePromotionelleRoute.js";
+import OffrerecyclageRoutes from "./routes/offreRecyclageRoute.js";
 import dotenv from "dotenv";
+import membership from "./routes/membershipRoute.js"; 
+import memberShipInvoice from "./routes/memberShipInvoiceRoute.js"; 
+import memberShipPayment from "./routes/memberShipPaymentRoute.js"; 
 
 //#endregion
 
-dotenv.config({path : "./config/.env"});
+dotenv.config({ path: "./config/.env" });
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
- 
 //#region Init DataBase Connection Section
 mongoose
-  .connect(config.get('DatabaseConnectionString'))
+  .connect(config.get("DatabaseConnectionString"))
   .then(() => {
     console.log("Connected to MongoDB database");
   })
@@ -50,9 +52,14 @@ app.use("/poubelles", PoubelleRoute);
 app.use("/appelOffre", appelOffre);
 app.use("/candidat", candidat);
 
-app.use('/OffrePromotionelle', OffrePromotionelleRoutes);
-app.use('/Offrerecyclage', OffrerecyclageRoutes );
-app.use("/user",userRoutes);
+app.use("/OffrePromotionelle", OffrePromotionelleRoutes);
+app.use("/Offrerecyclage", OffrerecyclageRoutes);
+app.use("/user", userRoutes);
+
+app.use("/Membership", membership);
+app.use("/MemberShipInvoice", memberShipInvoice);
+app.use("/MemberShipPayment", memberShipPayment);
+
 //#endregion
 
 app.use(notFoundError);
@@ -62,6 +69,6 @@ app.use(errorHandler);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`App Name: ${config.get('API_Name')}`);
+  console.log(`App Name: ${config.get("API_Name")}`);
   console.log(`Listening on port ${port}`);
 });
