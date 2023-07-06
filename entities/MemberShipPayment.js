@@ -1,11 +1,20 @@
 import mongoose from "mongoose";
 
+const paymentStatusEnum = Object.freeze({
+  None: "None",
+  Pending: "Pending",
+  Success: "Success",
+  Cancelled: "Cancelled",
+  Failed: "Failed",
+});
+
 const { Schema, model } = mongoose;
 
 const memberShipPaymentSchema = new Schema({
-  date: {
+  createdAt: {
     type: Date,
-    required: true,
+    default: Date.now,
+    require: true
   },
   thirdPartyPayment:{
     type: String, 
@@ -23,10 +32,18 @@ const memberShipPaymentSchema = new Schema({
     type: String, 
     require: false
   }, 
-  statut: {
+  paymentUsedType:{
+    type: String, 
+    require: false
+  }, 
+  paymentUsedMethod:{
+    type: String, 
+    require: false
+  }, 
+  status: {
     type: String,
-    enum: [ 'None', 'Pending', 'Success', 'Cancelled', 'Failed' ],
-    default: 'None'
+    enum: Object.values(paymentStatusEnum),
+    default: paymentStatusEnum.None,
   },
   membershipId: {
     type: Schema.Types.ObjectId,

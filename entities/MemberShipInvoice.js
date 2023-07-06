@@ -11,10 +11,6 @@ const memberShipInvoiceSchema = new Schema({
     type: String,
     require: false,
   },
-  priceHT: {
-    type: Number,
-    require: true,
-  },
   tvaPerPercent: {
     type: Number,
     require: false,
@@ -35,9 +31,10 @@ const memberShipInvoiceSchema = new Schema({
     type: String,
     require: false,
   },
-  date: {
+  createdAt: {
     type: Date,
-    require: false,
+    default: Date.now,
+    require: false
   },
 });
 
