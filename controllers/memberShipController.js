@@ -84,7 +84,7 @@ export async function GetAllAsync(req, res) {
       };
     });
 
-    res.status(201).send({
+    res.status(200).send({
       memberships: castedMemberships,
       pageNumber,
       pageSize,

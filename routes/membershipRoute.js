@@ -6,4 +6,5 @@ const router = express.Router();
 router.route("/").post(PostAsync).get(GetAllAsync);
 router.route("/:id").post(PostAsync).get(GetByIdAsync);
 
+
 export default router;

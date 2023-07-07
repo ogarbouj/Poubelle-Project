@@ -75,7 +75,9 @@ export async function InitPaymentAsync(req, res) {
   try {
     const { paymentAction, paymentId } = req.body;
 
-    const membershipPayment = await MemberShipPayment.findById(paymentId).exec();
+    const membershipPayment = await MemberShipPayment.findById(
+      paymentId
+    ).exec();
 
     if (!membershipPayment)
       return res.status(404).send("Membership Payment not found");
@@ -85,11 +87,11 @@ export async function InitPaymentAsync(req, res) {
     const response = await axios.get(
       `${config.get("KonnectGetPaymentURIProd")}${membershipPayment.paymentRef}`
     );
- 
+
     let paymentStatus = response.data.payment.status;
 
     // this line is only to add a fake invoice
-    paymentStatus = "success"; 
+    paymentStatus = "success";
 
     membershipPayment.paymentUsedMethod = response.data.payment.method;
     membershipPayment.paymentUsedType = response.data.payment.type;
@@ -106,16 +108,15 @@ export async function InitPaymentAsync(req, res) {
       ).exec();
       if (!membership) return res.status(404).send("Membership not found");
 
-
       const tvaPerPercent = 19;
       const tax = (membership.finalPrice / 100) * tvaPerPercent;
 
       const lastInvoice = await MemberShipInvoice.findOne()
-      .sort({ invoiceNumber: "desc" }) // Use "desc" instead of "asc"
-      .exec();
+        .sort({ invoiceNumber: "desc" }) // Use "desc" instead of "asc"
+        .exec();
 
       let tranferFee = 0;
- 
+
       const recycleOffer = await OffreRecyclage.findById(
         membership.offreRecyclagId
       ).exec();
@@ -133,7 +134,7 @@ export async function InitPaymentAsync(req, res) {
         tax: tax,
         totalPrice: membership.finalPrice,
         clientName: user.name,
-        invoiceNumber:lastInvoice ? lastInvoice.invoiceNumber + 1 : 1 
+        invoiceNumber: lastInvoice ? lastInvoice.invoiceNumber + 1 : 1,
       });
 
       await invoice.save();
@@ -148,9 +149,87 @@ export async function InitPaymentAsync(req, res) {
       date: membershipPayment.date,
       status: membershipPayment.status,
     });
-
   } catch (err) {
     console.error(err);
+    res.status(500).send(err);
+  }
+}
+//#endregion
+
+//#region GetAllAsync
+export async function GetAllAsync(req, res) {
+  try {
+    const pageNumber = parseInt(req.query.pageNumber) || 1; // Default to page 1 if not provided
+    const pageSize = parseInt(req.query.pageSize) || 10; // Default to a page size of 10 if not provided
+
+    const totalCount = await MemberShipPayment.countDocuments();
+
+    let totalPages = Math.ceil(totalCount / pageSize);
+
+    const payments = await MemberShipPayment.find()
+      .skip((pageNumber - 1) * pageSize)
+      .limit(pageSize)
+      .exec();
+
+    // Cast memberships to DTO or custom format
+    const castedPayments = payments.map((payment) => {
+      return {
+        id: payment.id,
+        thirdPartyPayment: payment.thirdPartyPayment,
+        thirdPartyWalletID: payment.thirdPartyWalletID,
+        paymentUsedType: payment.paymentUsedType,
+        paymentUsedMethod: payment.paymentUsedMethod,
+        status: payment.status,
+      };
+    });
+
+    res.status(200).send({
+      payments: castedPayments,
+      pageNumber,
+      pageSize,
+      totalCount,
+      totalPages,
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+}
+//#endregion
+
+//#region GetByIdAsync
+export async function GetByIdAsync(req, res) {
+  try {
+    const paymentId = req.params.id;
+
+    const payment = await MemberShipPayment.findById(paymentId).exec();
+    if (!payment) return res.status(404).send("Membership payment not found");
+
+    const membership = await Membership.findById(payment.membershipId).exec();
+    if (!membership) return res.status(404).send("Membership not found");
+
+    const invoice = await MemberShipInvoice.findById(payment.invoiceId).exec();
+
+    res.json({
+      payment: {
+        id: payment.id,
+        createdAt: payment.createdAt,
+        thirdPartyPayment: payment.thirdPartyPayment,
+        thirdPartyWalletID: payment.thirdPartyWalletID,
+        paymentURI: payment.paymentURI,
+        paymentRef: payment.paymentRef,
+        paymentUsedType: payment.paymentUsedType,
+        paymentUsedMethod: payment.paymentUsedMethod,
+        status: payment.status,
+        invoiceId: payment.invoiceId,
+        isInvoiceExist: !invoice,
+      },
+      membership: {
+        id: payment.membershipId,
+        createdAt: membership.createdAt,
+        finalPrice: membership.finalPrice,
+      },
+    });
+  } catch (err) {
     res.status(500).send(err);
   }
 }
