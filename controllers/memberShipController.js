@@ -24,12 +24,7 @@ export async function PostAsync(req, res) {
       finalPrice: (recycleOffer.price / 100) * 10 + recycleOffer.price,
       userId: userId,
       offreRecyclagId: recycleOfferId,
-      date: new Date(Date.UTC(2023, 6, 5)),
     });
-
-    membershipTemp.date.setHours(10);
-    membershipTemp.date.setMinutes(30);
-    membershipTemp.date.setSeconds(0);
     //#endregion
 
     membershipTemp
@@ -89,7 +84,7 @@ export async function GetAllAsync(req, res) {
       };
     });
 
-    res.status(201).send({
+    res.status(200).send({
       memberships: castedMemberships,
       pageNumber,
       pageSize,
@@ -119,7 +114,7 @@ export async function GetByIdAsync(req, res) {
     res.json({
       membership: {
         id: membership.id,
-        date: membership.date,
+        createdAt: membership.createdAt,
         finalPrice: membership.finalPrice,
       },
       user: {

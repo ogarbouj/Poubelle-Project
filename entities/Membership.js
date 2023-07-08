@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const memberShipSchema = new Schema({
-  date: {
+  createdAt: {
     type: Date,
-    require: false,
+    default: Date.now,
+    required: false
   },
   finalPrice: {
     type: Number,
