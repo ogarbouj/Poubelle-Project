@@ -1,19 +1,27 @@
 import express from 'express'
-import {createOffre, getAllOffresByEntreprise,getOffreByEntreprise, updateOffreByEntreprise,deleteOffreByEntreprise,getCandidatsSouscrits} from '../controllers/appelOffre.controller.js'
+
+import {createOffre,getAllOffre,getOffresByEntreprise,updateOffre,deleteOffre,getCandidatsByOffre,findById} from '../controllers/appelOffre.controller.js'
 const router = express.Router()
 
  router
     .route('/')
     .post(createOffre)  
-    .get(getAllOffresByEntreprise)
+    .get(getAllOffre)
 
-    router
-    .route('/:id')
-    .get(getOffreByEntreprise)
-    .put(updateOffreByEntreprise)
-    .delete(deleteOffreByEntreprise)
+   
 
 router
     .route('/:id/candidats')
-    .get(getCandidatsSouscrits)
+    .get(getCandidatsByOffre)
+router
+    .route('/users/:id/offres')
+    .get(getOffresByEntreprise)
+router
+    .route('/:id')
+    .put(updateOffre)
+    .delete(deleteOffre)
+    //.get(findById)
+router
+ .route('/:id')
+ .get(findById)
 export default router;

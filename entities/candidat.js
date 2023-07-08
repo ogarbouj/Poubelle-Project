@@ -21,11 +21,12 @@ const candidatSchema = new Schema({
       ref: 'Offre',
     },
   ],
-  recycleur: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
 },
 {
   timestamps: true

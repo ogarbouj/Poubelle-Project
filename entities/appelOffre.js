@@ -19,11 +19,12 @@ const offreSchema = new Schema({
     type: Date,
     required: true
   },
-  entreprise: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
   statut: {
     type: String,
     enum: ['En attente', 'Approuvé', 'Rejeté'],

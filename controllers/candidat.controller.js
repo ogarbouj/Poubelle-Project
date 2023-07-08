@@ -1,23 +1,35 @@
 import Candidat from "../entities/candidat.js";
+import User from "../entities/user.js"
 import nodemailer from "nodemailer";
 
 //#region createCandidat
 export function createCandidat(req, res) {
-  const { nom, email, numéro, idAppelOffre, idRecycleur } = req.body;
-  const candidat = new Candidat({
-    nom,
-    email,
-    numéro,
-    offres: [idAppelOffre],
-    recycleur: idRecycleur,
-  });
+  const { nom, email, numéro, idAppelOffre, idUser } = req.body;
 
-  candidat
-    .save()
-    .then((candidat) => {
-      const emailDestinataire = candidat.email;
-      sendNotificationEmail(candidat, emailDestinataire);
-      res.status(201).json(candidat);
+  Candidat.findOne({ user: idUser })
+    .then((existingCandidat) => {
+      if (existingCandidat) {
+        return res.status(400).json({ error: 'Le candidat existe déjà' });
+      }
+
+      const candidat = new Candidat({
+        nom,
+        email,
+        numéro,
+        offres: [idAppelOffre],
+        user: [idUser],
+      });
+
+      candidat
+        .save()
+        .then((candidat) => {
+          const emailDestinataire = candidat.email;
+          sendNotificationEmail(candidat, emailDestinataire);
+          res.status(201).json(candidat);
+        })
+        .catch((error) => {
+          res.status(500).json({ error: error.message });
+        });
     })
     .catch((error) => {
       res.status(500).json({ error: error.message });
@@ -66,12 +78,11 @@ function sendNotificationEmail(candidat, emailDestinataire) {
 }
 //#endregion
 
-//#region getAllCandidaturesByRecycleur
-export function getAllCandidaturesByRecycleur(req, res) {
-  const recycleurId = req.params.recycleurId;
-  Candidat.find({ recycleur: recycleurId })
-    .populate("offres")
-    .select("nom email numéro offres")
+
+export function getAllCandidats(req, res) {  
+  Candidat
+    .find()    
+    .select("nom email numéro offres user")
     .then((candidats) => {
       res.json(candidats);
     })
@@ -82,15 +93,15 @@ export function getAllCandidaturesByRecycleur(req, res) {
 //#endregion
 
 //#region getCandidatureByRecycleur
-export function getCandidatureByRecycleur(req, res) {
-  const { id } = req.params;
-  const { recycleur } = req.user;
-  Candidat.findById({ _id: id, recycleur })
-    .select("nom email numéro offres")
+export function getCandidatByRecycleur(req, res) {
+  const userId = req.params.userId;
+
+  Candidat.find({ User: userId })
+    .select("nom email numéro offres user")
     .then((candidat) => {
-      if (!candidat) {
+      /*if (!candidat) {
         return res.status(404).json({ error: "Candidat not found" });
-      }
+      }*/
       res.json(candidat);
     })
     .catch((error) => {
@@ -100,21 +111,17 @@ export function getCandidatureByRecycleur(req, res) {
 //#endregion
 
 //#region updateCandidatureByRecycleur
-export function updateCandidatureByRecycleur(req, res) {
-  const { recycleur } = req.user;
-  const { id } = req.params;
+export function updateCandidat(req, res) {
+  const candidatId = req.params.id;
   const { nom, email, numéro } = req.body;
 
-  Candidat.findByIdAndUpdate(
-    { _id: id, recycleur },
-    { nom, email, numéro },
-    { new: true }
-  )
-    .then((updatedCandidat) => {
-      if (!updatedCandidat) {
-        return res.status(404).json({ error: "Candidat not found" });
+  Candidat.findByIdAndUpdate(candidatId, { nom, email, numéro }, { new: true })
+    .then((candidat) => {
+      if (candidat) {
+        res.status(200).json(candidat);
+      } else {
+        res.status(404).json({ error: "Candidat non trouvé" });
       }
-      res.json(updatedCandidat);
     })
     .catch((error) => {
       res.status(500).json({ error: error.message });
@@ -123,16 +130,16 @@ export function updateCandidatureByRecycleur(req, res) {
 //#endregion
 
 //#region deleteCandidatureByRecycleur
-export function deleteCandidatureByRecycleur(req, res) {
-  const { id } = req.params;
-  const { recycleur } = req.user;
+export function deleteCandidat(req, res) {
+  const candidatId = req.params.id;
 
-  Candidat.findByIdAndDelete({ _id: id, recycleur })
-    .then((deletedCandidat) => {
-      if (!deletedCandidat) {
-        return res.status(404).json({ error: "Candidat not found" });
+  Candidat.findByIdAndDelete(candidatId)
+    .then((candidat) => {
+      if (candidat) {
+        res.status(200).json({ message: "Candidat supprimé avec succès" });
+      } else {
+        res.status(404).json({ error: "Candidat non trouvé" });
       }
-      res.json({ message: "Candidat deleted successfully" });
     })
     .catch((error) => {
       res.status(500).json({ error: error.message });
