@@ -67,8 +67,9 @@ export function getOnce(req, res) {
 
 //#region deleteOnce
 export function deleteOnce(req, res) {
+  console.log(req.body)
   offrepromotionelle
-    .findOneAndRemove({ id: req.params.id })
+    .findOneAndRemove({ _id: req.body.id })
     .then((doc) => {
       res.status(200).json(doc);
     })
@@ -80,7 +81,8 @@ export function deleteOnce(req, res) {
 
 //#region putOnce
 export function putOnce(req, res) {
-  let newGame = {
+  console.log(req.params.id)
+    let newGame = {
     title: req.body.title,
     description: req.body.description,
     pourcentageReduction: req.body.pourcentageReduction,
@@ -92,9 +94,9 @@ export function putOnce(req, res) {
     .findByIdAndUpdate(req.params.id, newGame)
     .then((doc1) => {
       offrepromotionelle
-        .findById(req.params.id)
+        .findById(req.body.id)
         .then((doc2) => {
-          res.status(200).json(doc2);
+          res.status(200).json("updated sucessffully ");
         })
         .catch((err) => {
           res.status(500).json({ error: err });
