@@ -1,0 +1,147 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/356528834_1435865000545060_824934644268187846_n.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">E_Waste</h1>
+        <p class="text-white mt-0 mb-5">  pour un environnement sain et propre</p>
+    
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/img/theme/logo.png" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        
+       
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+              
+               
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+           
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i>
+            </div>
+            <hr class="my-4" /> <p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+            
+          </div>
+        </div>
+        <div class="card-body">
+          <form name="form" (ngSubmit)="signUp()" #f="ngForm">
+            <h6 class="heading-small text-muted mb-4"></h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-name"> Prenom</label>
+                    <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="surname" [(ngModel)]="form.name" value="farhani">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-surname">Nom</label>
+                    <input type="text" id="input-surname" class="form-control form-control-alternative" placeholder="surname" [(ngModel)]="form.surname"  value="ameni">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Adresse mail</label>
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="email" [(ngModel)]="form.email"  placeholder="aaaaa@example.com">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Phone</label>
+                    <input type="number" id="input-phone" class="form-control form-control-alternative" placeholder="phone" [(ngModel)]="form.phone"  placeholder="+216 22 454 454">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-pwd">Mot de passe</label >
+                    <input type="password" id="input-pwd" class="form-control form-control-alternative" [(ngModel)]="form.pwd"  placeholder="pwd" value="xxx">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-pwd">Role</label >
+                  
+                    <select  [(ngModel)]="form.role" name="role"   required>
+                      <option value="collect">collect</option>
+                      <option value="user">user</option>
+                      <option value="entreprise">entreprise</option>
+                      <option value="recycleur">recycleur</option>
+                    </select>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Address</label>
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  
+                </div>
+                <div class="col-lg-4">
+                
+                </div>
+               
+                <button type="submit" class="btn btn-primary my-4">Sign up</button>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+           
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

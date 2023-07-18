@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from '../../pages/login/login.component';
-import { RegisterComponent } from '../../pages/register/register.component';
+import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 
+
+import { SignupComponent } from 'src/app/pages/signup/signup.component';
+import { Component } from '@angular/core';
+import { LoginComponent } from '../../pages/login/login.component';
+import { AuthLayoutComponent } from './auth-layout.component';
 export const AuthLayoutRoutes: Routes = [
-    { path: 'login',          component: LoginComponent },
-    { path: 'register',       component: RegisterComponent }
+    { path: 'signup',      component: SignupComponent },
+    { path: 'login',   component: LoginComponent },
+  
+ 
 ];
