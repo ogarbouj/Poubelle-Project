@@ -68,7 +68,7 @@ export function getOnce(req, res) {
 //#region deleteOnce
 export function deleteOnce(req, res) {
   offrerecyclage
-    .findOneAndRemove({ id: req.params.id })
+    .findOneAndRemove({ _id: req.body.id })
     .then((doc) => {
       res.status(200).json(doc);
     })
