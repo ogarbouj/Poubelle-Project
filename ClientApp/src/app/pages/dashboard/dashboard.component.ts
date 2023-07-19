@@ -9,7 +9,6 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
-import { TestServiceService } from 'src/app/services/test-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,8 +23,8 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor(private service: TestServiceService) {
-    service.httpget("")
+  constructor() {
+   
   }
 
   ngOnInit() {
