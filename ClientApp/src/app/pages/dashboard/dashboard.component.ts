@@ -59,11 +59,4 @@ export class DashboardComponent implements OnInit {
     this.salesChart.update();
   }
 
-  getData() {
-    const url = '{PUT YOUR}';
-    this.httpService.httpGet(url).subscribe(response => {
-      console.log(response);
-    });
-  }
-
 }
