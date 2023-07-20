@@ -13,6 +13,15 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { GetAllMembershipsAdminComponent } from 'src/app/pages/getAllMembershipsAdmin/getAllMembershipsAdmin.component';
+import { GetAllMembershipClientComponent } from 'src/app/pages/GetAllMembershipClient/GetAllMembershipClient.component';
+import { GetAllPaymentAdminComponent } from 'src/app/pages/GetAllPaymentAdmin/GetAllPaymentAdmin.component';
+import { GetPaymentByIdComponent } from 'src/app/pages/GetPaymentById/GetPaymentById.component';
+import { GetAllInvoiceAdminComponent } from 'src/app/pages/GetAllInvoiceAdmin/GetAllInvoiceAdmin.component';
+import { GetInvoiceByIdComponent } from 'src/app/pages/GetInvoiceById/GetInvoiceById.component';
+import { GetAllInvoiceClientComponent } from 'src/app/pages/GetAllInvoiceClient/GetAllInvoiceClient.component';
+
 import { TestComponentComponent } from 'src/app/pages/Test-Component/Test-Component.component';
 import { AjoutPoubelleComponent } from 'src/app/pages/ajoutPoubelle/ajoutPoubelle.component';
 import { PoubellesComponent } from 'src/app/pages/Poubelles/Poubelles.component';
@@ -32,7 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-// import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   imports: [
@@ -56,7 +66,14 @@ import { MatButtonModule } from '@angular/material/button';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent, 
+    MapsComponent,
+    GetAllMembershipsAdminComponent,
+    GetAllMembershipClientComponent,
+    GetAllPaymentAdminComponent,
+    GetPaymentByIdComponent,
+    GetAllInvoiceAdminComponent,
+    GetInvoiceByIdComponent,
+    GetAllInvoiceClientComponent
     TestComponentComponent,
     AjoutPoubelleComponent,
     PoubellesComponent,
@@ -69,11 +86,7 @@ import { MatButtonModule } from '@angular/material/button';
     ZoneComponent,
     EditTypeComponent,
     EditZoneComponent
-    
-  
-    
-  
-    
+
   ]
 })
 

@@ -5,6 +5,15 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
+
+import { GetAllMembershipsAdminComponent } from 'src/app/pages/getAllMembershipsAdmin/getAllMembershipsAdmin.component';
+import { GetMembershipByIdComponent } from 'src/app/pages/getMembershipById/getMembershipById.component';
+import { GetAllMembershipClientComponent } from 'src/app/pages/GetAllMembershipClient/GetAllMembershipClient.component';
+import { GetAllPaymentAdminComponent } from 'src/app/pages/GetAllPaymentAdmin/GetAllPaymentAdmin.component';
+import { GetPaymentByIdComponent } from 'src/app/pages/GetPaymentById/GetPaymentById.component';
+import { GetAllInvoiceAdminComponent } from 'src/app/pages/GetAllInvoiceAdmin/GetAllInvoiceAdmin.component';
+import { GetInvoiceByIdComponent } from 'src/app/pages/GetInvoiceById/GetInvoiceById.component';
+import { GetAllInvoiceClientComponent } from 'src/app/pages/GetAllInvoiceClient/GetAllInvoiceClient.component';
 import { AjoutPoubelleComponent } from 'src/app/pages/ajoutPoubelle/ajoutPoubelle.component';
 import { PoubellesComponent } from 'src/app/pages/Poubelles/Poubelles.component';
 import { EditPoubelleComponent } from 'src/app/pages/edit-poubelle/edit-poubelle.component';
@@ -15,26 +24,27 @@ import { AjoutTypeComponent } from 'src/app/pages/AjoutType/AjoutType.component'
 import { ListeTypeComponent } from 'src/app/pages/listeType/listeType.component';
 import { EditTypeComponent } from 'src/app/pages/editType/editType.component';
 import { EditZoneComponent } from 'src/app/pages/editZone/editZone.component';
+
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'ajoutPoubelle',           component: AjoutPoubelleComponent },
-    { path: 'listePoubelle',           component: PoubellesComponent },
-    { path: 'edit-poubelle/:id', component: EditPoubelleComponent },
-    {path: 'zone' , component:ZoneComponent},
-    { path: 'search', component: SearchPoubellesComponent },
-    { path: 'listeZone' , component:ListZoneComponent},
-    { path:'type' , component:AjoutTypeComponent },
-    { path:'listeType' , component:ListeTypeComponent},
-    {path:'editType/:id' , component:EditTypeComponent },
-    {path:'editZone/:id' , component:EditZoneComponent },
-
-
-   
-   
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'tables', component: TablesComponent },
+  { path: 'icons', component: IconsComponent },
+  { path: 'maps', component: MapsComponent },
+  {path: 'zone' , component:ZoneComponent},
+  { path: 'search', component: SearchPoubellesComponent },
+  { path: 'listeZone' , component:ListZoneComponent},
+  { path:'type' , component:AjoutTypeComponent },
+  { path:'listeType' , component:ListeTypeComponent},
+  {path:'editType/:id' , component:EditTypeComponent },
+  {path:'editZone/:id' , component:EditZoneComponent },
+  { path: 'getAllMembershipAdmin', component: GetAllMembershipsAdminComponent },
+  { path: 'getMembershipByIdComponent/:id', component: GetMembershipByIdComponent },
+  { path: 'getAllMembershipClient', component: GetAllMembershipClientComponent },
+  { path: 'GetAllPaymentAdmin', component: GetAllPaymentAdminComponent },
+  { path: 'GetPaymentByIdComponent/:id', component: GetPaymentByIdComponent },
+  { path: 'GetAllInvoiceAdminComponent', component: GetAllInvoiceAdminComponent },
+  { path: 'GetAllInvoiceClient', component: GetAllInvoiceClientComponent },
+  { path: 'GetInvoiceById/:id', component: GetInvoiceByIdComponent },
  
-    
 ];
