@@ -47,4 +47,19 @@ export class LoginService {
    return localStorage.getItem('role');
     
   }
+
+
+
+  sendForgotPasswordEmail(email: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/forgot-password`, { email });
+  }
+
+  verifyVerificationCode(email: string, verificationCode: string, newPassword: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/reset-password`, { email, verificationCode, newPassword });
+  }
 }
+
+
+
+
+

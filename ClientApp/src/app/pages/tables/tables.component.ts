@@ -28,6 +28,7 @@ export class TablesComponent implements OnInit {
     if(confirm("Are you sure to delete "+userId)) {
     this.tableservice.deleteUser(userId).subscribe(
       () => {
+        alert('utilisateur supprimé')
         console.log('Utilisateur supprimé avec succès');
         this.getUsers(); // Met à jour la liste des utilisateurs après la suppression
       },

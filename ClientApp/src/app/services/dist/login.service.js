@@ -42,6 +42,12 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.getRole = function () {
         return localStorage.getItem('role');
     };
+    LoginService.prototype.sendForgotPasswordEmail = function (email) {
+        return this.http.post(this.apiUrl + "/forgot-password", { email: email });
+    };
+    LoginService.prototype.verifyVerificationCode = function (email, verificationCode, newPassword) {
+        return this.http.post(this.apiUrl + "/reset-password", { email: email, verificationCode: verificationCode, newPassword: newPassword });
+    };
     LoginService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

@@ -1,14 +1,16 @@
+"use strict";
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false,
-  apiUrl:"http://localhost:3000/",
-  mapbox: {
-    accessToken:'pk.eyJ1IjoiYW1lbmlmYXJoZW5pIiwiYSI6ImNsa2JkNmZrZzA1ZjEzZGs2Z2dnMjh6N3QifQ.4QVl-p0LFjZqEji33_28cA'}
+exports.__esModule = true;
+exports.environment = void 0;
+exports.environment = {
+    production: false,
+    apiUrl: "http://localhost:3000/",
+    mapbox: {
+        accessToken: 'pk.eyJ1IjoiYW1lbmlmYXJoZW5pIiwiYSI6ImNsa2JkNmZrZzA1ZjEzZGs2Z2dnMjh6N3QifQ.4QVl-p0LFjZqEji33_28cA'
+    }
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

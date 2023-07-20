@@ -8,6 +8,7 @@ var user_profile_component_1 = require("../../pages/user-profile/user-profile.co
 var tables_component_1 = require("../../pages/tables/tables.component");
 var Update_user_component_1 = require("src/app/pages/Update-user/Update-user.component");
 var auth_guard_1 = require("src/app/auth.guard");
+0;
 exports.AdminLayoutRoutes = [
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent, canActivate: [auth_guard_1.AuthGuard],
         data: {
@@ -21,5 +22,5 @@ exports.AdminLayoutRoutes = [
         } },
     { path: 'icons', component: icons_component_1.IconsComponent },
     { path: 'maps', component: maps_component_1.MapsComponent },
-    { path: 'update/:id', component: Update_user_component_1.UpdateComponent }
+    { path: 'update/:id', component: Update_user_component_1.UpdateComponent },
 ];

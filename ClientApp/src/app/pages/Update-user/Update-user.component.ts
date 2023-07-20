@@ -1,9 +1,10 @@
 // Update-user.component.ts
-import { Component, OnInit } from '@angular/core';
 import { User } from 'src/assets/scss/core/user';
 import { TablesService } from '../../services/Tables.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { environment } from '../../../environments/environment';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import * as mapboxgl from 'mapbox-gl';
 @Component({
   selector: 'app-update',
   templateUrl: './Update-user.component.html',
@@ -13,16 +14,32 @@ export class UpdateComponent implements OnInit {
   submitted: boolean = false;
   updateForm: User = new User(); // Utilisateur à mettre à jour
   errorMessage: string;
+  map: mapboxgl.Map;
+  style = 'mapbox://styles/mapbox/dark-v11';
 
   constructor(private tableservice: TablesService,private route:ActivatedRoute) {}
   user: any;
   id : String;
+  lat = 37.75;
+  lng = 122.41;
   ngOnInit() {
     this.route.params.subscribe( params =>
       this.id = params['id']  )
   
     this.tableservice.getUserById(this.id).subscribe( user =>
         this.user =user )
+
+
+        let token = environment.mapbox.accessToken;
+        Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(token);
+    
+          this.map = new mapboxgl.Map({
+            container: 'map',
+            style: this.style,
+            zoom: 13,
+            center: [this.lat, this.lng]    });
+            // Add map controls
+            this.map.addControl(new mapboxgl.NavigationControl());
   }
 
 

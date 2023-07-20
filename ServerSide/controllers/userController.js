@@ -2,6 +2,9 @@ import User from "../entities/user.js";
 import { body, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
+import bcrypt from "bcryptjs";
+import crypto from "crypto"
+
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.TOKEN_SECRET, {
@@ -22,7 +25,10 @@ export function addUser(req, res) {
       token: req.body.token,
       langitude: req.body.langitude,
       latitude: req.body.latitude,
+      role:req.body.role
     });
+
+
 
    
     user
@@ -44,10 +50,10 @@ export function addUser(req, res) {
         });
       })
       .catch((err) => {
-        res.status(500).json({ Message: "Internal server error" });
+        res.status(500).json({ message: "email was used try another one" });
       });
   } else {
-    res.status(400).json(validationResult(req).array());
+    res.status(400).json({ message: "phone must be 8 digit" });
   }
 }
 //#endregion
@@ -82,11 +88,11 @@ const transporter = nodemailer.createTransport({
     }
   });
 }
-// #endregion
 
-// #region getUser
+
 export function getUser(req, res) {
-  User.find({ name: req.params.name })
+  
+  User.findById( req.params.id )
     .then((users) => {
       res.status(200).json(users);
     })
@@ -94,9 +100,18 @@ export function getUser(req, res) {
       res.status(500).json(err);
     });
 }
-//#endregion
+//getAll
+export function getAllUsers(req, res) {
+  User.find()
+    .then((users) => {
+      res.status(200).json(users);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+}
 
-//#region signIn
+// signIn
 export async function signIn(req, res) {
   const { email, pwd } = req.body;
 
@@ -106,20 +121,22 @@ export async function signIn(req, res) {
     const token = createToken(user._id);
     
     res.cookie('jwt', token, { httpOnly: true, maxAge });
-   res.status(200).json({ token: token });
+   res.status(200).json({ token: token ,role:user.role});
   } catch (err) {
     res.status(500).json({ err });
   }
 }
-//#endregion
 
-//#region patchUser
+
+//patchUser
+
 export function patchUser(req, res) {
   const userId = req.params.id;
-  const { name, surname, phone, email, pwd, langitude, latitude } = req.body;
+  const { name, surname, phone, email, pwd, longitude, latitude ,role } = req.body; // Fix variable names here
 
   User.findByIdAndUpdate(
-    userId, { name, surname, phone, email, pwd, latitude, langitude },
+    userId,
+    { name, surname, phone, email, pwd, latitude, longitude,role }, // Fix variable names here
     { new: true }
   )
     .then((user) => {
@@ -135,9 +152,10 @@ export function patchUser(req, res) {
       res.status(500).json({ error: error.message });
     });
 }
-//#endregion
 
-//#region deleteUser
+
+
+//deleteUser
 export async function deleteUser(req, res) {
   User.findOneAndRemove({ _id: req.params.id })
     .then((doc) => {
@@ -150,9 +168,9 @@ export async function deleteUser(req, res) {
       res.status(500).json({ error: err });
     });
 }
-//#endregion
 
-//#region logoutUser
+
+// logoutUser
 export async function logoutUser(req, res) {
   try {
     res.clearCookie('jwt');
@@ -161,4 +179,83 @@ export async function logoutUser(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
-//#endregion
+function generateVerificationCode() {
+  return crypto.randomBytes(3).toString('hex').toUpperCase();
+}
+
+async function saveVerificationCode(userId, verificationCode) {
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error('User not found.');
+    }
+    user.verificationCode = verificationCode;
+    user.verificationCodeExpiresAt = Date.now() + 3600000;
+    await user.save();
+  } catch (err) {
+    console.error('Error saving verification code:', err);
+    throw err;
+  }
+}
+
+export async function sendForgotPasswordEmail(req, res) {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    const verificationCode = generateVerificationCode();
+    await saveVerificationCode(user._id, verificationCode);
+
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      auth: {
+        user: "solutionewaste1@gmail.com",
+        pass: "jmqyonhfljspelcz",
+      }
+    });
+    const mailOptions = {
+      from: "solutionewaste1@gmail.com",
+      to: user.email,
+      subject: 'Password Reset',
+      text: `Your verification code is: ${verificationCode}. Use this code to reset your password.`,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.response);
+    return res.status(200).json({ message: 'An email has been sent to your address. Please check your inbox.' });
+  } catch (err) {
+    console.error('Error sending email:', err);
+    return res.status(500).json({ message: 'An error occurred while sending the email.' });
+  }
+}
+
+export async function verifyVerificationCode(req, res) {
+  const { email, verificationCode, newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    if (user.verificationCode !== verificationCode || user.verificationCodeExpiresAt < Date.now()) {
+      return res.status(400).json({ message: 'Invalid or expired verification code.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.pwd = hashedPassword;
+    user.verificationCode = undefined;
+    user.verificationCodeExpiresAt = undefined;
+    await user.save();
+
+    return res.status(200).json({ message: 'Your password has been reset successfully.' });
+  } catch (err) {
+    console.error('Error resetting password:', err);
+    return res.status(500).json({ message: 'An error occurred while resetting the password.' });
+  }
+}
+

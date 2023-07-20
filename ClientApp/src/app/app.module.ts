@@ -13,12 +13,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
+import { MapsComponent } from './pages/maps/maps.component';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UpdateComponent } from './pages/Update-user/Update-user.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { forgetPasswordComponent } from './pages/forget-password/forget-password.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,14 +31,14 @@ import { TokenInterceptorService } from './token-interceptor.service';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    
+   
     
   ],
   declarations: [	
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-   
+    forgetPasswordComponent,
    
   
    

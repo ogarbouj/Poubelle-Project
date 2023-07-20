@@ -19,14 +19,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.UpdateComponent = void 0;
 // Update-user.component.ts
-var core_1 = require("@angular/core");
 var user_1 = require("src/assets/scss/core/user");
+var environment_1 = require("../../../environments/environment");
+var core_1 = require("@angular/core");
+var mapboxgl = require("mapbox-gl");
 var UpdateComponent = /** @class */ (function () {
     function UpdateComponent(tableservice, route) {
         this.tableservice = tableservice;
         this.route = route;
         this.submitted = false;
         this.updateForm = new user_1.User(); // Utilisateur à mettre à jour
+        this.style = 'mapbox://styles/mapbox/dark-v11';
+        this.lat = 37.75;
+        this.lng = 122.41;
     }
     UpdateComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -36,6 +41,16 @@ var UpdateComponent = /** @class */ (function () {
         this.tableservice.getUserById(this.id).subscribe(function (user) {
             return _this.user = user;
         });
+        var token = environment_1.environment.mapbox.accessToken;
+        Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(token);
+        this.map = new mapboxgl.Map({
+            container: 'map',
+            style: this.style,
+            zoom: 13,
+            center: [this.lat, this.lng]
+        });
+        // Add map controls
+        this.map.addControl(new mapboxgl.NavigationControl());
     };
     UpdateComponent.prototype.onSubmit = function () {
         this.update();

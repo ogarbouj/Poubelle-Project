@@ -20,6 +20,7 @@ var app_routing_1 = require("./app.routing");
 var components_module_1 = require("./components/components.module");
 var auth_guard_1 = require("./auth.guard");
 var token_interceptor_service_1 = require("./token-interceptor.service");
+var forget_password_component_1 = require("./pages/forget-password/forget-password.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -39,6 +40,7 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 admin_layout_component_1.AdminLayoutComponent,
                 auth_layout_component_1.AuthLayoutComponent,
+                forget_password_component_1.forgetPasswordComponent,
             ],
             providers: [token_interceptor_service_1.TokenInterceptorService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]

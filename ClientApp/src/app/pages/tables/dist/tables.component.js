@@ -27,6 +27,7 @@ var TablesComponent = /** @class */ (function () {
         var _this = this;
         if (confirm("Are you sure to delete " + userId)) {
             this.tableservice.deleteUser(userId).subscribe(function () {
+                alert('utilisateur supprimé');
                 console.log('Utilisateur supprimé avec succès');
                 _this.getUsers(); // Met à jour la liste des utilisateurs après la suppression
             }, function (error) {
