@@ -1,0 +1,27 @@
+
+
+<h1 style="text-align: center;">Voici La Listes Des Zone</h1>
+<div class="zone-list-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zone of zones">
+        <td>{{ zone.nom }}</td>
+        <td>{{ zone.latitude }}</td>
+        <td>{{ zone.longitude }}</td>
+        <td>
+          <button class="btn btn-spacing" (click)="onEdit(zone._id)">Edit</button>
+          <button class="btn" (click)="onDelete(zone._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

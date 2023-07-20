@@ -1,0 +1,51 @@
+<h1 style="text-align: center; color: green;">Créer une poubelle</h1>
+<form [formGroup]="poubelleForm" (ngSubmit)="onSubmit()" class="container mt-5">
+  <div class="form-group">
+    <label for="type">Type :</label>
+    <select id="type" formControlName="idType" name="idType" class="form-control">
+      <option value="">--Veuillez choisir une Type--</option>
+      <option *ngFor="let type of types" [value]="type._id">{{type.nom}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="zone">Zone :</label>
+    <select id="zone" formControlName="idZone" name="idZone" class="form-control">
+      <option value="">--Veuillez choisir une Zone--</option>
+      <option *ngFor="let zone of zones" [value]="zone._id">{{zone.nom}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="nom">Nom :</label>
+    <select id="nom" formControlName="nom" name="nom" class="form-control">
+      <option value="">--Veuillez choisir un Nom--</option>
+      <option>poubelle1</option>
+      <option>poubelle2</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="capacite">Capacité :</label>
+    <select id="capacite" formControlName="capacite" name="capacite" class="form-control">
+      <option value="">--Veuillez choisir La Capacité--</option>
+      <option>1000</option>
+      <option>500</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="taille">Taille :</label>
+    <select id="taille" formControlName="taille" name="taille" class="form-control">
+      <option value="">--Veuillez choisir la Taille--</option>
+      <option>Grand</option>
+      <option>Moyenne</option>
+      <option>Petite</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="statut">Statut :</label>
+    <select id="statut" formControlName="statut" name="statut" class="form-control">
+      <option value="">--Veuillez choisir le Statut--</option>
+      <option>Vide</option>
+      <option>Pleine</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success mt-3">Ajouter</button>
+</form>
