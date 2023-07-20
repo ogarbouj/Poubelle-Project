@@ -24,6 +24,12 @@ import { AjoutTypeComponent } from 'src/app/pages/AjoutType/AjoutType.component'
 import { ListeTypeComponent } from 'src/app/pages/listeType/listeType.component';
 import { EditTypeComponent } from 'src/app/pages/editType/editType.component';
 import { EditZoneComponent } from 'src/app/pages/editZone/editZone.component';
+import { OffreRecyclageComponent } from 'src/app/pages/OffreRecyclage/OffreRecyclage.component';
+import { OffrePromoUpdateComponentComponent } from 'src/app/pages/OffrePromoUpdateComponent/OffrePromoUpdateComponent.component';
+import { AdminAjoutOffrePromotionnelleComponent } from 'src/app/pages/AdminAjoutOffrePromotionnelle/AdminAjoutOffrePromotionnelle.component';
+import { AdminGestionOffreRecyclageComponent } from 'src/app/pages/AdminGestionOffreRecyclage/AdminGestionOffreRecyclage.component';
+import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdate/OffreRecyclageUpdate.component';
+import { OffreRecyclageUserADMINComponent } from 'src/app/pages/OffreRecyclage-UserADMIN/OffreRecyclage-UserADMIN.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -31,13 +37,13 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'tables', component: TablesComponent },
   { path: 'icons', component: IconsComponent },
   { path: 'maps', component: MapsComponent },
-  {path: 'zone' , component:ZoneComponent},
+  { path: 'zone', component: ZoneComponent },
   { path: 'search', component: SearchPoubellesComponent },
-  { path: 'listeZone' , component:ListZoneComponent},
-  { path:'type' , component:AjoutTypeComponent },
-  { path:'listeType' , component:ListeTypeComponent},
-  {path:'editType/:id' , component:EditTypeComponent },
-  {path:'editZone/:id' , component:EditZoneComponent },
+  { path: 'listeZone', component: ListZoneComponent },
+  { path: 'type', component: AjoutTypeComponent },
+  { path: 'listeType', component: ListeTypeComponent },
+  { path: 'editType/:id', component: EditTypeComponent },
+  { path: 'editZone/:id', component: EditZoneComponent },
   { path: 'getAllMembershipAdmin', component: GetAllMembershipsAdminComponent },
   { path: 'getMembershipByIdComponent/:id', component: GetMembershipByIdComponent },
   { path: 'getAllMembershipClient', component: GetAllMembershipClientComponent },
@@ -46,5 +52,12 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'GetAllInvoiceAdminComponent', component: GetAllInvoiceAdminComponent },
   { path: 'GetAllInvoiceClient', component: GetAllInvoiceClientComponent },
   { path: 'GetInvoiceById/:id', component: GetInvoiceByIdComponent },
- 
+  { path: 'OffreRecyclage', component: OffreRecyclageComponent },
+  { path: 'OffrePoromotionnelle', component: OffrePromoUpdateComponentComponent },
+  { path: 'AdminAjoutOffrePromotionnelle', component: AdminAjoutOffrePromotionnelleComponent },
+  { path: 'AdminGestionOffreRecyclage', component: AdminGestionOffreRecyclageComponent },
+  { path: 'OffreRecyclageUserUpdate/:id', component: OffreRecyclageUpdateComponent },
+  { path: 'OffrePromoUserUpdate/:id', component: OffrePromoUpdateComponentComponent },
+  { path: 'OffreRecyclageUser', component: OffreRecyclageUserADMINComponent },
+
 ];
