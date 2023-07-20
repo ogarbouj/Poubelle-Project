@@ -22,7 +22,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/GetAllInvoiceAdminComponent', title: 'Manage Invoices',  icon:'ni-money-coins text-pink', class: '' },
     { path: '/GetAllInvoiceClient', title: 'Manage Invoices Client',  icon:'ni-money-coins text-pink', class: '' },
 
-    { path: '/test', title: 'Test',  icon:'ni-bell-55 text-pink', class: '' },
     { path: '/ajoutPoubelle', title: 'AjoutPoubelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/listePoubelle', title: 'ListPoubelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/zone', title: 'AjouterZone',  icon:'ni-circle-08 text-pink', class: '' },
