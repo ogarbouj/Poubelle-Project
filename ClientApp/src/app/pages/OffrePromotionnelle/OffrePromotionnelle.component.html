@@ -1,0 +1,29 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+<div class="container">
+  <div *ngFor="let p of offrePromo">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <h5 class="card-title"> Type : {{p.type}}</h5>
+        <h5 class="card-title">Reduction % : {{p.pourcentageReduction}}</h5>
+        <h5 class="card-title"> ID-user : {{p.user}}</h5>
+        <a  class="btn btn-danger"  [routerLink]="[ '/OffrePromoUserUpdate',p.id]"  >Update Offre </a>
+
+        <a  class="btn btn-danger" (click)="removeProduct(p)" >Delete </a>
+
+      </div>
+    </div>
+
+
+
+

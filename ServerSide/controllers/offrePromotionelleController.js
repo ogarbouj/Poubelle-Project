@@ -67,21 +67,20 @@ export function getOnce(req, res) {
 
 //#region deleteOnce
 export function deleteOnce(req, res) {
-  console.log(req.body)
   offrepromotionelle
-    .findOneAndRemove({ _id: req.body.id })
-    .then((doc) => {
-      res.status(200).json(doc);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err });
-    });
+  .findOneAndRemove({ _id: req.params.id })
+  .then((doc) => {
+    res.status(200).json(doc);
+  })
+  .catch((err) => {
+    res.status(500).json({ error: err });
+  });
 }
 //#endregion
 
 //#region putOnce
 export function putOnce(req, res) {
-  console.log(req.params.id)
+  console.log("req.params.id")
     let newGame = {
     title: req.body.title,
     description: req.body.description,
@@ -94,9 +93,9 @@ export function putOnce(req, res) {
     .findByIdAndUpdate(req.params.id, newGame)
     .then((doc1) => {
       offrepromotionelle
-        .findById(req.body.id)
+        .findById(req.params.id)
         .then((doc2) => {
-          res.status(200).json("updated sucessffully ");
+         return res.status(200).json(doc2);
         })
         .catch((err) => {
           res.status(500).json({ error: err });

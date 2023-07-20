@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
-
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
@@ -41,7 +40,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
+import { AdminAjoutOffrePromotionnelleComponent } from 'src/app/pages/AdminAjoutOffrePromotionnelle/AdminAjoutOffrePromotionnelle.component';
+import { AdminGestionOffreRecyclageComponent } from 'src/app/pages/AdminGestionOffreRecyclage/AdminGestionOffreRecyclage.component';
+import { OffrePromoUpdateComponentComponent } from 'src/app/pages/OffrePromoUpdateComponent/OffrePromoUpdateComponent.component';
+import { OffreRecyclageUserADMINComponent } from 'src/app/pages/OffreRecyclage-UserADMIN/OffreRecyclage-UserADMIN.component';
+import { OffreRecyclageComponent } from 'src/app/pages/OffreRecyclage/OffreRecyclage.component';
+import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdate/OffreRecyclageUpdate.component';
 
 
 @NgModule({
@@ -58,8 +62,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
-    
- 
+
   ],
   declarations: [
     DashboardComponent,
@@ -73,7 +76,7 @@ import { MatButtonModule } from '@angular/material/button';
     GetPaymentByIdComponent,
     GetAllInvoiceAdminComponent,
     GetInvoiceByIdComponent,
-    GetAllInvoiceClientComponent
+    GetAllInvoiceClientComponent,
     TestComponentComponent,
     AjoutPoubelleComponent,
     PoubellesComponent,
@@ -85,7 +88,14 @@ import { MatButtonModule } from '@angular/material/button';
     AjoutTypeComponent,
     ZoneComponent,
     EditTypeComponent,
-    EditZoneComponent
+    EditZoneComponent,
+    AdminAjoutOffrePromotionnelleComponent,
+    AdminGestionOffreRecyclageComponent,
+    AdminAjoutOffrePromotionnelleComponent,
+    OffrePromoUpdateComponentComponent,
+    OffreRecyclageUserADMINComponent,
+    OffreRecyclageComponent,
+    OffreRecyclageUpdateComponent,
 
   ]
 })
