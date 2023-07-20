@@ -146,7 +146,8 @@ function signIn(req, res) {
           });
           res.status(200).json({
             token: token,
-            role: user.role
+            role: user.role,
+            id: user._id
           });
           _context.next = 14;
           break;

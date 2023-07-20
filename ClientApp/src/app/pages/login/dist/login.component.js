@@ -34,6 +34,7 @@ var LoginComponent = /** @class */ (function () {
             next: function (data) {
                 localStorage.setItem("access_token", data.token);
                 localStorage.setItem("role", data.role);
+                localStorage.setItem("user-id", data.id);
                 _this.isLoginFailed = false;
                 _this.isLoggedIn = true;
                 var role = _this.authService.getRole();

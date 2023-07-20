@@ -121,7 +121,7 @@ export async function signIn(req, res) {
     const token = createToken(user._id);
     
     res.cookie('jwt', token, { httpOnly: true, maxAge });
-   res.status(200).json({ token: token ,role:user.role});
+   res.status(200).json({ token: token ,role:user.role,id:user._id });
   } catch (err) {
     res.status(500).json({ err });
   }
