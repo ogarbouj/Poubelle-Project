@@ -8,7 +8,7 @@ import { Poubelle } from 'src/app/models/poubelle/poubelle.model';
   providedIn: 'root'
 })
 export class PoubelleService {
-  url: string = environment.apiUrl + "poubelles"
+  url: string = environment.baseURI + "poubelles"
 
   constructor(private http: HttpClient) { }
   createPoubelle(poubelle: any): Observable<any> {
@@ -31,11 +31,11 @@ export class PoubelleService {
   }
 
   fetchZones(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}zones`);
+    return this.http.get<any[]>(`${this.url}zones`);
   }
 
   fetchTypes(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}types`);
+    return this.http.get<any[]>(`${this.url}types`);
   }
 
   searchPoubelles(searchCriteria: {}): Observable<Poubelle[]> {

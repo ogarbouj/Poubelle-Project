@@ -7,7 +7,7 @@ import { Zone } from 'src/app/models/zone/zone.model';
   providedIn: 'root'
 })
 export class ZoneService {
-  url:string = environment.apiUrl+"Zones"
+  url:string = environment.baseURI+"Zones"
 
   constructor(private http: HttpClient) { }
 
@@ -39,5 +39,5 @@ export class ZoneService {
     });
 }
 
-  
+
 }

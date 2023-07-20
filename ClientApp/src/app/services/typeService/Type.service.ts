@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TypeService {
-  url:string = environment.apiUrl+"types"
+  url:string = environment.baseURI+"types"
 
   constructor(private http: HttpClient) { }
 
@@ -28,5 +28,5 @@ export class TypeService {
   getType(id: string): Observable<Type> {
     return this.http.get<Type>(`${this.url}/${id}`);
   }
-  
+
 }

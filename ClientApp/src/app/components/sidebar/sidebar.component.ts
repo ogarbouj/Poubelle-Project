@@ -28,7 +28,14 @@ export const ROUTES: RouteInfo[] = [
     { path: '/zone', title: 'AjouterZone',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/listeZone', title: 'ListZone',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/type', title: 'AjouterType',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/listeType', title: 'ListType',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/listeType', title: 'ListType',  icon:'ni-circle-08 text-pink', class: '' },
+
+    { path: '/OffreRecyclage', title: ' User(Cleint) Consultation-Adhésion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/OffrePoromotionnelle', title: ' User(Admin) Gestion Offre Poromotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/OffreRecyclageUser', title: ' User(Admin) Ajout Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/AdminAjoutOffrePromotionnelle', title: ' User(Admin) Ajout Offre Promotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
 
 ];
 
