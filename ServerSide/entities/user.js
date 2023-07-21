@@ -24,6 +24,8 @@ const schemaUser = new Schema(
     phone: {
       type: Number,
       required: true,
+      options: { min: 8 },
+      errorMessage: 'phone should be at  8 digits ',
     },
     email: {
       type: String,
@@ -45,19 +47,23 @@ const schemaUser = new Schema(
       default: rolesEnum.USER,
     },
 
-    verified: {
-      type: Boolean,
-
-      default: false,
+    verificationCode: {
+      type: String,
+      required: false,
     },
+    verificationCodeExpiresAt: {
+      type: Date,
+      required: false,
+    },
+  
 
     langitude: {
       type: Number,
-      required: true,
+      required: false,
     },
     latitude: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }
