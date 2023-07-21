@@ -135,6 +135,7 @@ export async function InitPaymentAsync(req, res) {
         totalPrice: membership.finalPrice,
         clientName: user.name,
         invoiceNumber: lastInvoice ? lastInvoice.invoiceNumber + 1 : 1,
+        userId: membership.userId
       });
 
       await invoice.save();

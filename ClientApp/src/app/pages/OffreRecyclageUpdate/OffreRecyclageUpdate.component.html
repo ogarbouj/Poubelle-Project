@@ -1,0 +1,86 @@
+<br>
+
+  <html>
+
+
+  <head>
+    <style>
+      /* Styles pour le formulaire */
+      .form-row {
+        margin-bottom: 10px;
+      }
+      .form-group label {
+        font-weight: bold;
+      }
+      .form-control {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .form-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+
+
+    <form (ngSubmit)="update()">
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+      <h1 class="form-title">Ajouter Offre de Recyclage </h1>
+      <br>
+      <br>
+
+
+      <div class="form-row" >
+
+
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Titre</label>
+          <input type="text" class="form-control" id="inputAddress88" placeholder="tite de l'offre" [(ngModel)]="offre.title" name="title" >
+          {{offre.title}}
+        </div>
+      <div class="form-group">
+        <label for="inputAddress">Type</label>
+        <input type="text" class="form-control" id="inputAddress77" placeholder="Entreprise / Particulier" [(ngModel)]="offre.type" name="type" >
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Price Monthly</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Price Monthly" [(ngModel)]="offre.price" name="price" >
+
+      </div>
+      <div class="form-group">
+        <label for="inputAddress3">Poubelle 1</label>
+        <input type="text" class="form-control" id="inputAddress3" placeholder="id Poubelle" [(ngModel)]="offre.ListePoublelle[0]"  name=" ListePoublelle" >
+      </div>
+      <div class="form-group">
+        <label for="inputAddress4">Poubelle 2</label>
+        <input type="text" class="form-control" id="inputAddress4" placeholder="id Poubelle" [(ngModel)]="offre.ListePoublelle[1]"  name=" ListePoublelle" >
+      </div>
+      <div class="form-group">
+        <label for="inputAddress5">Poubelle 3</label>
+        <input type="text" class="form-control" id="inputAddress5" placeholder="id Poubelle" [(ngModel)]="offre.ListePoublelle[2]"  name=" ListePoublelle" >
+      </div>
+      <br>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+
+  </body>
+  </html>

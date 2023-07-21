@@ -24,11 +24,7 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor(private httpService: TestServiceService ){
-  }
-
   ngOnInit() {
-    this.getData();
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -60,13 +56,6 @@ export class DashboardComponent implements OnInit {
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
-  }
-
-  getData() {
-    const url = '{PUT YOUR}';
-    this.httpService.httpGet(url).subscribe(response => {
-      console.log(response);
-    });
   }
 
 }

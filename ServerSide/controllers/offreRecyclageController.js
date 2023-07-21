@@ -1,7 +1,8 @@
-import { validationResult } from "express-validator";
+import { body, validationResult } from "express-validator";
 
 import offrerecyclage from "../entities/OffreRecyclage.js";
 import nodemailer from "nodemailer";
+import OffreRecyclage from "../entities/OffreRecyclage.js";
 
 //#region getAll
 export function getAll(req, res) {
@@ -68,7 +69,7 @@ export function getOnce(req, res) {
 //#region deleteOnce
 export function deleteOnce(req, res) {
   offrerecyclage
-    .findOneAndRemove({ _id: req.body.id })
+    .findOneAndRemove({ _id: req.params.id })
     .then((doc) => {
       res.status(200).json(doc);
     })
@@ -156,6 +157,7 @@ export function addOnceMail(req, res) {
       });
     })
     .catch((err) => {
+      console.log('====>',err)
       res.status(500).json({ error: err });
     });
 }
@@ -187,3 +189,23 @@ function sendEmail(recipient, subject, body) {
   });
 }
 //#endregion
+//#region addOnce
+export async function assignOffre(req, res) {
+  console.log(req.body);
+  const { id, user_id } = req.body;
+  if (!validationResult(req).isEmpty()) {
+    res.status(400).json({ errors: validationResult(req).array() });
+  } else {
+    try {
+      let offre = await OffreRecyclage.findOneAndUpdate(
+        { _id: id },
+        { $push: { users: user_id } },
+        { new: true }
+      );
+      console.log(offre);
+      return res.status(200).json({ data: offre });
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+}

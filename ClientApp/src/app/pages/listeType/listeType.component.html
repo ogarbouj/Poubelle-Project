@@ -1,0 +1,21 @@
+<h1 style="text-align: center;">Voici La Liste Des Types</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let type of types">
+      <td>{{type.nom}}</td>
+      <td>{{type.description}}</td>
+      <td>
+        <button (click)="editType(type)">Edit</button>
+        <button (click)="deleteType(type._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

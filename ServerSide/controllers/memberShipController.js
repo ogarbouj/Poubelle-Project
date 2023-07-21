@@ -97,6 +97,46 @@ export async function GetAllAsync(req, res) {
 }
 //#endregion
 
+//#region GetAllByUserIdAsync
+export async function GetAllByUserIdAsync(req, res) {
+  try {
+
+    const userId = req.params.userId;
+
+    const pageNumber = parseInt(req.query.pageNumber) || 1; // Default to page 1 if not provided
+    const pageSize = parseInt(req.query.pageSize) || 10; // Default to a page size of 10 if not provided
+
+    const totalCount = await Membership.countDocuments();
+
+    let totalPages = Math.ceil(totalCount / pageSize);
+
+    const memberships = await Membership.find({ userId })
+      .skip((pageNumber - 1) * pageSize)
+      .limit(pageSize)
+      .exec();
+
+    // Cast memberships to DTO or custom format
+    const castedMemberships = memberships.map((membership) => {
+      return {
+        id: membership.id,
+        finalPrice: membership.finalPrice,
+        date: membership.date,
+      };
+    });
+
+    res.status(200).send({
+      memberships: castedMemberships,
+      pageNumber,
+      pageSize,
+      totalCount,
+      totalPages,
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+}
+//#endregion
+
 //#region GetByIdAsync
 export async function GetByIdAsync(req, res) {
   try {

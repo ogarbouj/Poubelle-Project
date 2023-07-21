@@ -36,6 +36,11 @@ const memberShipInvoiceSchema = new Schema({
     default: Date.now,
     require: false
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
 });
 
 export default model("MemberShipInvoice", memberShipInvoiceSchema);

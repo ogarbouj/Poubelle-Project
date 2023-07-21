@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  
+
+  <label>trier Poubelles par Capactité:</label>
+  <select name="" id="" (change)="fetchPoubellesByTaille($event.target.value)">
+    <option value="">Choisir une option</option>
+    <option value="asc">Tri ascendant</option>
+    <option value="desc">Tri descendant </option>
+  </select>
+<app-poubelle *ngFor="let poubelle of poubelles" [poubelle]="poubelle"></app-poubelle>
+
+  <div class="mt-4">
+    <label>Recherche par Type:</label>
+    <select [(ngModel)]="selectedType" (change)="fetchPoubellesByType()">
+      <option value="">Choisir une option</option>
+      <option *ngFor="let type of types" [value]="type._id">{{ type.nom }}</option>
+    </select>
+    
+    <label class="mt-4">Recherche par Zone:</label>
+    <select [(ngModel)]="selectedZone" (change)="fetchPoubellesByZone()">
+      <option value="">choisir une option</option>
+      <option *ngFor="let zone of zones" [value]="zone._id">{{ zone.nom }}</option>
+    </select>
+  </div>
+  <div class="search-panel">
+    <select (change)="searchPoubelles($event)">
+      <option value="">Choisir un critére de recherche</option>
+      <option value="nom">Recherche par  Nom</option>
+      <option value="capacite">Recherche par Capacité</option>
+      <option value="taille">Recherche par  Taille</option>
+      <option value="statut">Recherche par Statut</option>
+    </select>
+  
+    <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher " />
+    <button (click)="searchPoubelles()">chercher</button>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 20px;">Liste des poubelles</h2>
+  <table class="table table-striped table-bordered table-hover mt-4">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Capacité</th>
+        <th>Taille</th>
+        <th>Statut</th>
+        <th>Type</th>
+        <th>Zone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let poubelle of poubelles">
+        <td>{{ poubelle.nom }}</td>
+        <td>{{ poubelle.capacite }}</td>
+        <td>{{ poubelle.taille }}</td>
+        <td>{{ poubelle.statut }}</td>
+        <td>{{ poubelle.type?.nom }}</td>
+        <td>{{ poubelle.zone?.nom }}</td>
+        <td>
+          <button (click)="modifierPoubelle(poubelle._id)" class="btn btn-warning">Modifier</button>
+          <button (click)="supprimerPoubelle(poubelle._id)" class="btn btn-danger ml-2">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

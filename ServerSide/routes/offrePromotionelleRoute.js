@@ -14,7 +14,7 @@ const router = express.Router();
 router
   .route("/")
   .get(getAll)
-  .delete(deleteOnce)
+  
   .post(
     body("title").isLength({ min: 5 }),
     body("type").isLength({ min: 5 }),
@@ -26,6 +26,7 @@ router
 router
   .route("/:id")
   .get(getOnce)
+  .delete(deleteOnce)
   .put(
     body("title").isLength({ min: 5 }),
     body("type").isLength({ min: 5 }),
