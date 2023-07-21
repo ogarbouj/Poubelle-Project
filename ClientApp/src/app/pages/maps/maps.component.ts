@@ -1,6 +1,6 @@
 import { environment } from '../../../environments/environment';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import * as mapboxgl from 'mapbox-gl';
+// import * as mapboxgl from 'mapbox-gl';
 
 @Component({
   selector: 'app-maps',
@@ -8,7 +8,7 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
-
+/*
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
   lat = 37.75;
@@ -27,5 +27,6 @@ export class MapsComponent implements OnInit {
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
   }
+  */
 
 }
