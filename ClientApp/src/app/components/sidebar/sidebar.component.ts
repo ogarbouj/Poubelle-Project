@@ -15,27 +15,24 @@ export const ROUTES: RouteInfo[] = [
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
     { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
-
+    { path: '/signup', title: 'Inscription',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/getAllMembershipAdmin', title: 'Manage Memberships',  icon:'ni-single-copy-04 text-pink', class: '' },
     { path: '/getAllMembershipClient', title: 'Manage Memberships Client',  icon:'ni-single-copy-04 text-pink', class: '' },
     { path: '/GetAllPaymentAdmin', title: 'Manage Payments',  icon:'ni-credit-card text-pink', class: '' },
     { path: '/GetAllInvoiceAdminComponent', title: 'Manage Invoices',  icon:'ni-money-coins text-pink', class: '' },
     { path: '/GetAllInvoiceClient', title: 'Manage Invoices Client',  icon:'ni-money-coins text-pink', class: '' },
-
     { path: '/ajoutPoubelle', title: 'AjoutPoubelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/listePoubelle', title: 'ListPoubelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/zone', title: 'AjouterZone',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/listeZone', title: 'ListZone',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/type', title: 'AjouterType',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/listeType', title: 'ListType',  icon:'ni-circle-08 text-pink', class: '' },
-
     { path: '/OffreRecyclage', title: ' User(Cleint) Consultation-Adhésion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/OffrePoromotionnelle', title: ' User(Admin) Gestion Offre Poromotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/OffreRecyclageUser', title: ' User(Admin) Ajout Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminAjoutOffrePromotionnelle', title: ' User(Admin) Ajout Offre Promotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
-
 ];
 
 @Component({

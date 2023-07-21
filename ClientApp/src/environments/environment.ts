@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
+  mapbox: {
+    accessToken:'pk.eyJ1IjoiYW1lbmlmYXJoZW5pIiwiYSI6ImNsa2JkNmZrZzA1ZjEzZGs2Z2dnMjh6N3QifQ.4QVl-p0LFjZqEji33_28cA'
+  },
   baseURI: "http://localhost:3000/"
+
 };
 
 /*
