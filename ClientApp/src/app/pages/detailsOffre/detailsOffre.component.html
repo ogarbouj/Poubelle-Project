@@ -1,0 +1,13 @@
+<div>
+  <h2>Détails de l'offre</h2>
+
+  <div *ngIf="offer">
+    <h2>{{ offer.titre }}</h2>
+    <p><strong>Description:</strong> {{ offer.description }}</p>
+    <p><strong>Start Date:</strong> {{ offer.dateDebut | date }}</p>
+    <p><strong>End Date:</strong> {{ offer.dateFin | date }}</p>
+    <p><strong>Status:</strong> {{ offer.statut }}</p>
+  </div>
+
+
+</div>

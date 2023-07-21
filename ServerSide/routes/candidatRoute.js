@@ -1,5 +1,5 @@
 import express from 'express'
-import {createCandidat,getAllCandidats,updateCandidat,deleteCandidat} from '../controllers/candidat.controller.js'
+import {createCandidat,getAllCandidats,updateCandidat,deleteCandidat, getCandidatByRecycleur} from '../controllers/candidat.controller.js'
 
 const router = express.Router()
 
@@ -8,10 +8,10 @@ router
   .post(createCandidat)
   .get(getAllCandidats)
 
-/*router
-  .route('/:id')
-  .get(getCandidatureByRecycleur)// Route pour obtenir une candidature par son identifiant et le recycleur
-  .put(updateCandidatureByRecycleur)// Route pour mettre à jour une candidature par son identifiant et le recycleur
+router
+  .route('/:userId')
+  .get(getCandidatByRecycleur)// Route pour obtenir une candidature par son identifiant et le recycleur
+  /*.put(updateCandidatureByRecycleur)// Route pour mettre à jour une candidature par son identifiant et le recycleur
   .delete(deleteCandidatureByRecycleur)// Route pour supprimer une candidature par son identifiant et le recycleur
 
 router

@@ -8,14 +8,14 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
+    // { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+    // { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
+    // { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
+    // { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
+    // { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/signup', title: 'Inscription',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/signup', title: 'Inscription',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/getAllMembershipAdmin', title: 'Manage Memberships',  icon:'ni-single-copy-04 text-pink', class: '' },
     { path: '/getAllMembershipClient', title: 'Manage Memberships Client',  icon:'ni-single-copy-04 text-pink', class: '' },
     { path: '/GetAllPaymentAdmin', title: 'Manage Payments',  icon:'ni-credit-card text-pink', class: '' },
@@ -32,7 +32,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/OffreRecyclageUser', title: ' User(Admin) Ajout Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminAjoutOffrePromotionnelle', title: ' User(Admin) Ajout Offre Promotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
-    // { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/offresByRecycleur', title: 'list offres by recycleur',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/candidats', title: 'List candidats by admin',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/candidatByRecycleur/:idUser', title: 'Consulter ma candidature',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/offresByAdmin', title: 'offres By admin',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/offresByEntreprise', title: 'offres By Entreprise',  icon:'ni-circle-08 text-pink', class: ''}
 ];
 
 @Component({

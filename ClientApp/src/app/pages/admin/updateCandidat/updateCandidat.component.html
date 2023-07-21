@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Modifier le candidat</h1>
+  <form [formGroup]="candidatForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <input type="text" formControlName="nom" id="nom" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input type="email" formControlName="email" id="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="numero">Numéro :</label>
+      <input type="text" formControlName="numero" id="numero" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <a routerLink="/candidats" class="btn btn-secondary">Annuler</a>
+  </form>
+</div>
