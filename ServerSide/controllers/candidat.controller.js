@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 
 //#region createCandidat
 export function createCandidat(req, res) {
-  const { nom, email, numéro, idAppelOffre, idUser } = req.body;
+  const { nom, email, numero, idAppelOffre, idUser, statut} = req.body;
 
   Candidat.findOne({ user: idUser })
     .then((existingCandidat) => {
@@ -15,9 +15,10 @@ export function createCandidat(req, res) {
       const candidat = new Candidat({
         nom,
         email,
-        numéro,
+        numero,
         offres: [idAppelOffre],
-        user: [idUser],
+        user: [idUser], 
+        statut,       
       });
 
       candidat
@@ -82,7 +83,8 @@ function sendNotificationEmail(candidat, emailDestinataire) {
 export function getAllCandidats(req, res) {  
   Candidat
     .find()    
-    .select("nom email numéro offres user")
+    .select("nom email numero offres user statut")
+    .populate('offres')
     .then((candidats) => {
       res.json(candidats);
     })
@@ -96,8 +98,8 @@ export function getAllCandidats(req, res) {
 export function getCandidatByRecycleur(req, res) {
   const userId = req.params.userId;
 
-  Candidat.find({ User: userId })
-    .select("nom email numéro offres user")
+  Candidat.find({ user: userId })
+    .select("nom email numero offres user statut")
     .then((candidat) => {
       /*if (!candidat) {
         return res.status(404).json({ error: "Candidat not found" });
@@ -113,9 +115,9 @@ export function getCandidatByRecycleur(req, res) {
 //#region updateCandidatureByRecycleur
 export function updateCandidat(req, res) {
   const candidatId = req.params.id;
-  const { nom, email, numéro } = req.body;
+  const { nom, email, numero, statut } = req.body;
 
-  Candidat.findByIdAndUpdate(candidatId, { nom, email, numéro }, { new: true })
+  Candidat.findByIdAndUpdate(candidatId, { nom, email, numero, statut }, { new: true })
     .then((candidat) => {
       if (candidat) {
         res.status(200).json(candidat);

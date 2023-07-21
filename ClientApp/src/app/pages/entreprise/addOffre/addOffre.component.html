@@ -1,0 +1,35 @@
+<div>
+  <h1>Ajouter un appel d'offres</h1>
+
+  <form (ngSubmit)="ajouterAppelOffres()" #offreForm="ngForm">
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input type="text" class="form-control" id="titre" name="titre" [(ngModel)]="nouvelAppelOffres.titre" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" name="description" [(ngModel)]="nouvelAppelOffres.description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="dateDebut">Date de début</label>
+      <input type="date" class="form-control" id="dateDebut" name="dateDebut" [(ngModel)]="nouvelAppelOffres.dateDebut" required>
+    </div>
+    <div class="form-group">
+      <label for="dateFin">Date de fin</label>
+      <input type="date" class="form-control" id="dateFin" name="dateFin" [(ngModel)]="nouvelAppelOffres.dateFin" required>
+    </div>
+    <div class="form-group">
+      <label for="statut">Statut</label>
+      <select class="form-control" id="statut" name="statut" [(ngModel)]="nouvelAppelOffres.statut" required>
+        <option value="En attente">En attente</option>
+        <option value="Approuvé">Approuvé</option>
+        <option value="Rejeté">Rejeté</option>
+      </select>
+    </div>
+
+    <!-- You can hide this field, as it will be set automatically in the component -->
+    <input type="hidden" name="idUser" [(ngModel)]="nouvelAppelOffres.idUser">
+
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+</div>

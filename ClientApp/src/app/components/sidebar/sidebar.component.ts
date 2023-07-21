@@ -32,7 +32,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/OffreRecyclageUser', title: ' User(Admin) Ajout Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminAjoutOffrePromotionnelle', title: ' User(Admin) Ajout Offre Promotionnelle',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
-    // { path: '/AdminGestionOffreRecyclage', title: ' User (Admin) Gestion Offre Recyclage',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/offresByRecycleur', title: 'list offres by recycleur',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/candidats', title: 'List candidats by admin',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/candidatByRecycleur/:idUser', title: 'Consulter ma candidature',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/offresByAdmin', title: 'offres By admin',  icon:'ni-circle-08 text-pink', class: ''},
+    { path: '/offresByEntreprise', title: 'offres By Entreprise',  icon:'ni-circle-08 text-pink', class: ''}
 ];
 
 @Component({

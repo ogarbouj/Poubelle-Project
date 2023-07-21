@@ -1,0 +1,48 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+  <h1>Liste des offres en cours</h1>
+
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0">
+        <table class="table table-striped table-bordered table-hover mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date de début</th>
+      <th scope="col">Date de fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let offre of offresEnAttente">
+      <td>{{ offre.titre }}</td>
+      <td>{{ offre.description }}</td>
+      <td>{{ offre.dateDebut | date }}</td>
+      <td>{{ offre.dateFin | date }}</td>
+      <td>
+        <button (click)="voirDetailsOffre(offre._id)"  class="btn btn-warning" >Details</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

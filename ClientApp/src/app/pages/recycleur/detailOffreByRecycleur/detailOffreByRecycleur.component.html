@@ -1,0 +1,35 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row">
+        <h1 class="text-white">Détails de l'appel d'offre</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0 p-4">
+        <div *ngIf="offer">
+          <h2 class="mb-4">{{ offer.titre }}</h2>
+          <p><strong>Description :</strong></p>
+          <p>{{ offer.description }}</p>
+          <p><strong>Date de Début :</strong> {{ offer.dateDebut | date }}</p>
+          <p><strong>Date de Fin :</strong> {{ offer.dateFin | date }}</p>
+          <p><strong>Statut :</strong> {{ offer.statut }}</p>
+          <p><strong>Il reste </strong> {{ daysRemaining }} jours pour souscrire à cet appel d'offre</p>
+          <p>Pour postuler, veuillez cliquer sur ce bouton <button type="button" class="btn btn-warning" (click)="souscrire()">Postuler</button></p>
+          <div class="alert alert-dismissible fade show" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger'}" *ngIf="alertMessage">
+            <span class="alert-inner--icon" *ngIf="alertType === 'success'"><i class="ni ni-like-2"></i></span>
+            <span class="alert-inner--text"><strong>{{ alertType === 'success' ? 'Success' : 'Danger' }}!</strong> {{ alertMessage }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

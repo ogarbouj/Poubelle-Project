@@ -49,6 +49,22 @@ import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdat
 import { PayMembershipComponent } from 'src/app/pages/PayMembership/PayMembership.component';
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
 
+import { DetailsOffreComponent } from 'src/app/pages/detailsOffre/detailsOffre.component';
+import { UpdateOffresComponent } from 'src/app/pages/updateOffres/updateOffres.component';
+import { OffresByRecycleurComponent } from 'src/app/pages/recycleur/offresByRecycleur/offresByRecycleur.component';
+
+import { CandidatsComponent } from 'src/app/pages/admin/candidats/candidats.component';
+import { CandidatByrecycleurComponent } from 'src/app/pages/recycleur/candidatByrecycleur/candidatByrecycleur.component';
+import { AppelOffresComponent } from 'src/app/pages/admin/appelOffres/appelOffres.component';
+import { UpdateOffreComponent } from 'src/app/pages/admin/updateOffre/updateOffre.component';
+import { UpdateCandidatComponent } from 'src/app/pages/admin/updateCandidat/updateCandidat.component';
+import { OffresByEntrepriseComponent } from 'src/app/pages/entreprise/offresByEntreprise/offresByEntreprise.component';
+import { UpdateOffreByEntrepriseComponent } from 'src/app/pages/entreprise/updateOffreByEntreprise/updateOffreByEntreprise.component';
+import { AddOffreComponent } from 'src/app/pages/entreprise/addOffre/addOffre.component';
+import { ListCandidatsByEntrepriseComponent } from 'src/app/pages/entreprise/listCandidatsByEntreprise/listCandidatsByEntreprise.component';
+import { DetailOffreByRecycleurComponent } from 'src/app/pages/recycleur/detailOffreByRecycleur/detailOffreByRecycleur.component';
+import { DetailOffreByEntrepriseComponent } from 'src/app/pages/entreprise/detailOffreByEntreprise/detailOffreByEntreprise.component';
+
 
 @NgModule({
   imports: [
@@ -101,7 +117,22 @@ import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
     OffreRecyclageComponent,
     OffreRecyclageUpdateComponent,
     PayMembershipComponent,
-    FilterPipe
+    FilterPipe,
+    UpdateOffresComponent,
+    DetailsOffreComponent,
+    OffresByRecycleurComponent,
+
+    CandidatsComponent,
+    CandidatByrecycleurComponent,
+    AppelOffresComponent,
+    UpdateOffreComponent,
+    UpdateCandidatComponent,
+    OffresByEntrepriseComponent,
+    UpdateOffreByEntrepriseComponent,
+    AddOffreComponent,
+    ListCandidatsByEntrepriseComponent,
+    DetailOffreByRecycleurComponent,
+    DetailOffreByEntrepriseComponent
   ]
 })
 

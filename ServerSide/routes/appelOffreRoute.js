@@ -14,7 +14,7 @@ router
     .route('/:id/candidats')
     .get(getCandidatsByOffre)
 router
-    .route('/users/:id/offres')
+    .route('/users/:idUser/offres')
     .get(getOffresByEntreprise)
 router
     .route('/:id')

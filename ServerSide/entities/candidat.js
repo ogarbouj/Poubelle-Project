@@ -11,7 +11,7 @@ const candidatSchema = new Schema({
     type: String,
     required: true,
   },
-  numéro: {
+  numero: {
     type: String,
     required: true,
   },
@@ -26,7 +26,12 @@ const candidatSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-  ],
+  ],  
+  statut: {
+    type: String,
+    enum: ['En attente', 'Approuvé', 'Rejeté'],
+    default: 'En attente'
+  }
 },
 {
   timestamps: true

@@ -1,0 +1,45 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row">
+        <!-- Add any additional header content here if needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0 p-4">
+        <div *ngIf="candidats">
+
+          <ul>
+            <li *ngFor="let candidat of candidats">
+
+              <h2>Votre candidature est {{ candidat.statut }}</h2>
+              <div>
+                <h3>Détails de l'appel d'offre :</h3>
+                <p><strong>Titre:</strong> {{ candidat.offreDetails.titre }}</p>
+                <p><strong>Description:</strong> {{ candidat.offreDetails.description }}</p>
+                <p><strong>Date de début:</strong> {{ candidat.offreDetails.dateDebut | date }}</p>
+                <p><strong>Date de fin:</strong> {{ candidat.offreDetails.dateFin | date }}</p>
+
+                <!-- Add any other specific details about the offreDetails here -->
+              </div>
+
+              <hr>
+              <button (click)="annulerCandidature(candidat._id)" class="btn btn btn-primary">Annuler ma candidature</button>
+              <p *ngIf="candidatDeletedMessage">{{ candidatDeletedMessage }}</p>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="candidats && candidats.length === 0">
+          <h2>Aucune candidature pour le moment.</h2>
+          <h2>Veuillez consulter la liste des appels d'offres en cours</h2>
+          <button (click)="offresByRecycleur()" class="btn btn-warning">Cliquez</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

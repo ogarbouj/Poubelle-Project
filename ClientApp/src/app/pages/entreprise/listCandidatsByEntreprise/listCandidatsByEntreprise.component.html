@@ -1,0 +1,41 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+  <h1>La liste des candidatures inscrites dans votre appel d'offre</h1>
+
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0">
+        <div class="container mt-5">
+
+          <div *ngIf="candidats && candidats.length > 0; else noCandidats">
+            <ul>
+              <!-- Afficher les détails de chaque candidat -->
+              <li *ngFor="let candidat of candidats">
+                <strong>Nom :</strong> {{ candidat.nom }}<br>
+                <strong>Email :</strong> {{ candidat.email }}<br>
+                <strong>Numéro de téléphone :</strong> {{ candidat.numero }}<br>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Message d'erreur en cas de candidats absents -->
+          <ng-template #noCandidats>
+            <p>Aucun candidat n'est inscrit à cette offre pour le moment.</p>
+          </ng-template>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

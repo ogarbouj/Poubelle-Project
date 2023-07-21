@@ -35,9 +35,9 @@ export function getAllOffre(req,res){
     });
 }
 export function getOffresByEntreprise(req, res) {
-  const userId = req.params.userId;
+  const userId = req.params.idUser;
 
-  Offre.find({ User: userId })
+  Offre.find({ user: userId })
     .select("titre description dateDebut dateFin statut")    
     .then((offres) => {
       res.status(200).json(offres);
@@ -52,7 +52,7 @@ export function updateOffreByUser(req, res) {
   const { titre, description, dateDebut, dateFin, statut } = req.body;
 
   Offre.findOneAndUpdate(
-    { _id: offreId, user: userId },
+    { _id: offreId },
     { titre, description, dateDebut, dateFin, statut },
     { new: true }
   )
