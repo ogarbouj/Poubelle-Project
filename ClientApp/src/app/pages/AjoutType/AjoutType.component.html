@@ -1,7 +1,7 @@
-<h1 style="color: black; text-align: center;">create type</h1>
+<h1 style="text-align: center; color: green;">Ajouter Type</h1>
 <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="nom">Name:</label>
+    <label for="nom">Nom:</label>
     <input id="nom" type="text" formControlName="nom" class="form-control">
   </div>
 
@@ -10,5 +10,5 @@
     <input id="description" type="text" formControlName="description" class="form-control">
   </div>
 
-  <button type="submit" [disabled]="typeForm.invalid" class="btn btn-primary">Submit</button>
+  <button type="submit" [disabled]="typeForm.invalid" class="btn btn-primary">Ajouter</button>
 </form>

@@ -28,5 +28,5 @@ export class TypeService {
   getType(id: string): Observable<Type> {
     return this.http.get<Type>(`${this.url}/${id}`);
   }
-
+  
 }
