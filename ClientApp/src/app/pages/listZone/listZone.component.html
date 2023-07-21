@@ -1,11 +1,11 @@
 
 
-<h1 style="text-align: center;">Voici La Listes Des Zone</h1>
+<h1 style="text-align: center; color: green;">Liste Des Zones</h1>
 <div class="zone-list-container">
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Nom</th>
         <th>Latitude</th>
         <th>Longitude</th>
         <th>Action</th>
@@ -17,8 +17,8 @@
         <td>{{ zone.latitude }}</td>
         <td>{{ zone.longitude }}</td>
         <td>
-          <button class="btn btn-spacing" (click)="onEdit(zone._id)">Edit</button>
-          <button class="btn" (click)="onDelete(zone._id)">Delete</button>
+          <button class="btn btn-spacing" (click)="onEdit(zone._id)">modifier</button>
+          <button class="btn" (click)="onDelete(zone._id)">supprimer</button>
         </td>
       </tr>
     </tbody>

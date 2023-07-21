@@ -61,5 +61,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'OffreRecyclageUser', component: OffreRecyclageUserADMINComponent },
   { path: 'ajoutPoubelle', component: AjoutPoubelleComponent },
   { path: 'listePoubelle', component: PoubellesComponent },
+  { path: 'edit-poubelle/:id', component: EditPoubelleComponent },
+  
 
 ];

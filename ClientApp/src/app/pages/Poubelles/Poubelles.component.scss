@@ -80,19 +80,19 @@
       cursor: pointer;
 
       &.btn-warning {
-        background-color: #ffc107;
+        background-color: #05750a;
         color: white;
         &:hover {
-          background-color: #e0a800;
+          background-color: #066a0b;
         }
       }
 
       &.btn-danger {
-        background-color: #dc3545;
+        background-color: #115205;
         color: white;
         margin-left: 10px;
         &:hover {
-          background-color: #c82333;
+          background-color: #0b5805;
         }
       }
     }

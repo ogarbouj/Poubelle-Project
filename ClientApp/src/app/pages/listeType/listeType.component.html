@@ -1,8 +1,8 @@
-<h1 style="text-align: center;">Voici La Liste Des Types</h1>
+<h1 style="text-align: center; color: green;">Liste des Types</h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Nom</th>
       <th>Description</th>
       <th>Actions</th>
     </tr>
@@ -12,8 +12,8 @@
       <td>{{type.nom}}</td>
       <td>{{type.description}}</td>
       <td>
-        <button (click)="editType(type)">Edit</button>
-        <button (click)="deleteType(type._id)">Delete</button>
+        <button (click)="editType(type)">modifier</button>
+        <button (click)="deleteType(type._id)">supprimer</button>
       </td>
     </tr>
   </tbody>

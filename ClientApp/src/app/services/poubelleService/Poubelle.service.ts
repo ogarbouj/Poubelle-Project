@@ -31,11 +31,11 @@ export class PoubelleService {
   }
 
   fetchZones(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}zones`);
+    return this.http.get<any[]>(`${environment.baseURI}zones`);
   }
 
   fetchTypes(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}types`);
+    return this.http.get<any[]>(`${environment.baseURI}types`);
   }
 
   searchPoubelles(searchCriteria: {}): Observable<Poubelle[]> {

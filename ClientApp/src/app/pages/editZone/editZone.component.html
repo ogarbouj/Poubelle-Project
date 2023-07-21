@@ -1,9 +1,9 @@
 <div class="edit-zone-container">
-  <h2>Edit Zone</h2>
+  <h1 style="text-align: center; color: green;">Modifier Zones</h1>
 
   <form (ngSubmit)="onUpdate()">
     <div>
-      <label for="nom">Name:</label>
+      <label for="nom">Nom:</label>
       <input type="text" id="nom" [(ngModel)]="zone.nom" name="nom">
     </div>
 
@@ -17,6 +17,6 @@
       <input type="number" id="longitude" [(ngModel)]="zone.longitude" name="longitude">
     </div>
 
-    <button type="submit">Save</button>
+    <button type="submit">Enregistrer</button>
   </form>
 </div>
