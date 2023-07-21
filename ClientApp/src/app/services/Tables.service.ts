@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TablesService {
-  private apiUrl: string = environment.apiUrl + "user";
+  private apiUrl: string = environment.baseURI + "user";
   private token: string;
 
   constructor(private http: HttpClient) {

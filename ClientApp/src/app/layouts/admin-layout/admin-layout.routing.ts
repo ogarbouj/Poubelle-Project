@@ -9,23 +9,6 @@ import { Component } from '@angular/core';
 import { LoginComponent } from '../../pages/login/login.component';
 import { UpdateComponent } from 'src/app/pages/Update-user/Update-user.component';
 import { AuthGuard } from 'src/app/auth.guard';
-
-export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent , canActivate: [AuthGuard],
-    data: {
-      role: 'admin'
-    }},
-    { path: 'user-profile',   component: UserProfileComponent, canActivate: [AuthGuard], data: {
-        role: 'admin'
-      } },
-    { path: 'tables',         component: TablesComponent , canActivate: [AuthGuard], data: {
-        role: 'admin'
-      } },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
- {path:'update/:id', component:UpdateComponent},
- 
-
 import { GetAllMembershipsAdminComponent } from 'src/app/pages/getAllMembershipsAdmin/getAllMembershipsAdmin.component';
 import { GetMembershipByIdComponent } from 'src/app/pages/getMembershipById/getMembershipById.component';
 import { GetAllMembershipClientComponent } from 'src/app/pages/GetAllMembershipClient/GetAllMembershipClient.component';
@@ -50,6 +33,24 @@ import { AdminAjoutOffrePromotionnelleComponent } from 'src/app/pages/AdminAjout
 import { AdminGestionOffreRecyclageComponent } from 'src/app/pages/AdminGestionOffreRecyclage/AdminGestionOffreRecyclage.component';
 import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdate/OffreRecyclageUpdate.component';
 import { OffreRecyclageUserADMINComponent } from 'src/app/pages/OffreRecyclage-UserADMIN/OffreRecyclage-UserADMIN.component';
+
+// export const AdminLayoutRoutes: Routes = [
+//     { path: 'dashboard',      component: DashboardComponent , canActivate: [AuthGuard],
+//     data: {
+//       role: 'admin'
+//     }},
+//     { path: 'user-profile',   component: UserProfileComponent, canActivate: [AuthGuard], data: {
+//         role: 'admin'
+//       } },
+//     { path: 'tables',         component: TablesComponent , canActivate: [AuthGuard], data: {
+//         role: 'admin'
+//       } },
+//     { path: 'icons',          component: IconsComponent },
+//     { path: 'maps',           component: MapsComponent },
+//     {path:'update/:id', component:UpdateComponent},
+
+
+
 
 export const AdminLayoutRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },

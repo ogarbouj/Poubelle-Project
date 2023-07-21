@@ -8,29 +8,28 @@ import { User } from 'src/assets/scss/core/user';
   providedIn: 'root'
 })
 export class SignupService {
-  private apiUrl: string = environment.apiUrl + "user";
-  token = localStorage.getItem('token') // Will return if it is not set 
+  private apiUrl: string = environment.baseURI + "user";
+  token = localStorage.getItem('token') // Will return if it is not set
 
 
 
-    constructor(private http: HttpClient) { }
-    
+  constructor(private http: HttpClient) { }
 
-    signup(user: User): Observable<any> {
-      this.token =  this.token
+
+  signup(user: User): Observable<any> {
+    this.token = this.token
     let httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': "Bearer " +localStorage.getItem("access_token")
+        'Authorization': "Bearer " + localStorage.getItem("access_token")
       })
     }
-      return this.http.post(`${this.apiUrl}/`, user, httpOptions);
-    }
-    forgotPassword(data:any){
-      return this.http.post(this.apiUrl+"/forgotPassword/",data,{
-        headers:new HttpHeaders().set('content-type',"application/json")
-      })
-      }
+    return this.http.post(`${this.apiUrl}/`, user, httpOptions);
+  }
+  forgotPassword(data: any) {
+    return this.http.post(this.apiUrl + "/forgotPassword/", data, {
+      headers: new HttpHeaders().set('content-type', "application/json")
+    })
+  }
 
-    }
-  
-  
+}
+

@@ -4,7 +4,7 @@ import { TablesService } from '../../services/Tables.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import * as mapboxgl from 'mapbox-gl';
+// import * as mapboxgl from 'mapbox-gl';
 @Component({
   selector: 'app-update',
   templateUrl: './Update-user.component.html',
@@ -14,7 +14,7 @@ export class UpdateComponent implements OnInit {
   submitted: boolean = false;
   updateForm: User = new User(); // Utilisateur à mettre à jour
   errorMessage: string;
-  map: mapboxgl.Map;
+  // map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/dark-v11';
 
   constructor(private tableservice: TablesService,private route:ActivatedRoute) {}
@@ -25,14 +25,14 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe( params =>
       this.id = params['id']  )
-  
+
     this.tableservice.getUserById(this.id).subscribe( user =>
         this.user =user )
 
-
+/*
         let token = environment.mapbox.accessToken;
         Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(token);
-    
+
           this.map = new mapboxgl.Map({
             container: 'map',
             style: this.style,
@@ -40,6 +40,7 @@ export class UpdateComponent implements OnInit {
             center: [this.lat, this.lng]    });
             // Add map controls
             this.map.addControl(new mapboxgl.NavigationControl());
+            */
   }
 
 
@@ -65,7 +66,7 @@ export class UpdateComponent implements OnInit {
           console.log('Utilisateur mis à jour avec succès :', response);
         alert('Utilisateur mis à jour avec succès :');
           this.submitted = true;
-        
+
         },
         error => {
           console.error('Une erreur s\'est produite lors de la mise à jour de l\'utilisateur :', error);

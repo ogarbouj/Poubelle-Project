@@ -7,7 +7,7 @@ import { Observable,of } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl: string = environment.apiUrl + "user/sign";
+  private apiUrl: string = environment.baseURI + "user/sign";
   isLogin = false;
 
   roleAs: string;
@@ -45,7 +45,7 @@ export class LoginService {
 
   getRole() {
    return localStorage.getItem('role');
-    
+
   }
 
 
