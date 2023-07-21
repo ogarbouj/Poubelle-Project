@@ -24,7 +24,7 @@ export class GetAllInvoiceClientComponent implements OnInit {
   }
 
   getInvoiceService(pgNumber: number) {
-    this.invoiceServices.getAllByUserAsync("64b2ab78d04aebdd8b91ddc0", pgNumber, this.pageSize).subscribe(
+    this.invoiceServices.getAllByUserAsync("64b6dedf627e779936bae9a0", pgNumber, this.pageSize).subscribe(
       (res) => {
         this.invoices = res.invoices;
         this.pageNumber = res.pageNumber;

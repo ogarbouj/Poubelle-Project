@@ -24,7 +24,7 @@ export class GetAllMembershipClientComponent implements OnInit {
   }
 
   getMemberShipService(pgNumber: number) {
-    this.membershipServices.getAllByUserAsync("64b2ab78d04aebdd8b91ddc0", pgNumber, this.pageSize).subscribe(
+    this.membershipServices.getAllByUserAsync("64b6dedf627e779936bae9a0", pgNumber, this.pageSize).subscribe(
       (res) => {
         this.pageNumber = res.pageNumber;
         this.pageSize = res.pageSize;

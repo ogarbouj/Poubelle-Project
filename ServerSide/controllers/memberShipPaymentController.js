@@ -74,7 +74,7 @@ export async function PayAsync(req, res) {
 export async function InitPaymentAsync(req, res) {
   try {
     const { paymentAction, paymentId } = req.body;
-
+    let invoiceNumber = 0; 
     const membershipPayment = await MemberShipPayment.findById(
       paymentId
     ).exec();
@@ -127,6 +127,8 @@ export async function InitPaymentAsync(req, res) {
 
       tranferFee = membership.finalPrice - recycleOffer.price;
 
+      invoiceNumber = lastInvoice ? lastInvoice.invoiceNumber + 1 : 1;
+
       const invoice = new MemberShipInvoice({
         description: "Payment of recycle offer",
         tvaPerPercent: tvaPerPercent,
@@ -134,8 +136,8 @@ export async function InitPaymentAsync(req, res) {
         tax: tax,
         totalPrice: membership.finalPrice,
         clientName: user.name,
-        invoiceNumber: lastInvoice ? lastInvoice.invoiceNumber + 1 : 1,
-        userId: membership.userId
+        invoiceNumber: invoiceNumber,
+        userId: membership.userId,
       });
 
       await invoice.save();

@@ -1,6 +1,8 @@
+import { MembershipService } from 'src/app/services/membership.service';
 import { Component, OnInit } from '@angular/core';
 import { OffreRecyclage } from 'src/app/core/OffreRecyclage';
 import { ServiceOffreRecyService } from 'src/app/services/ServiceOffreRecy.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-OffreRecyclage',
@@ -11,7 +13,7 @@ export class OffreRecyclageComponent implements OnInit {
 
   offreRecyclage: OffreRecyclage[] = [];
   searchTerm: string = '';
-  constructor(private _serviceOffreRecyService: ServiceOffreRecyService) { }
+  constructor(private _serviceOffreRecyService: ServiceOffreRecyService, private membershipServices: MembershipService, private router: Router) { }
 
   ngOnInit() {
     this._serviceOffreRecyService.getofferRecyclags().subscribe((data: any) => {
@@ -38,12 +40,15 @@ export class OffreRecyclageComponent implements OnInit {
   assignofferRecylge(offer: OffreRecyclage) {
     this._serviceOffreRecyService.assignOfferRecyclagUser(offer.id).subscribe(() => {
 
+      this.membershipServices.PostMembershipAsync("64b6dedf627e779936bae9a0", offer.id.toString()).subscribe(
+        (res) => {
+          this.router.navigateByUrl(`/getMembershipByIdComponent/${res.id}`);
+        },
+        (err) => {
+          console.log(err);
+        })
 
-      alert('assign offerRecyclqge successfully. success')
-
-    })
-
-
+    });
 
   }
 

@@ -46,6 +46,8 @@ import { OffrePromoUpdateComponentComponent } from 'src/app/pages/OffrePromoUpda
 import { OffreRecyclageUserADMINComponent } from 'src/app/pages/OffreRecyclage-UserADMIN/OffreRecyclage-UserADMIN.component';
 import { OffreRecyclageComponent } from 'src/app/pages/OffreRecyclage/OffreRecyclage.component';
 import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdate/OffreRecyclageUpdate.component';
+import { PayMembershipComponent } from 'src/app/pages/PayMembership/PayMembership.component';
+import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
 
 
 @NgModule({
@@ -98,6 +100,8 @@ import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdat
     OffreRecyclageUserADMINComponent,
     OffreRecyclageComponent,
     OffreRecyclageUpdateComponent,
+    PayMembershipComponent,
+    FilterPipe
   ]
 })
 

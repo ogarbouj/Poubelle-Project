@@ -33,6 +33,7 @@ import { AdminAjoutOffrePromotionnelleComponent } from 'src/app/pages/AdminAjout
 import { AdminGestionOffreRecyclageComponent } from 'src/app/pages/AdminGestionOffreRecyclage/AdminGestionOffreRecyclage.component';
 import { OffreRecyclageUpdateComponent } from 'src/app/pages/OffreRecyclageUpdate/OffreRecyclageUpdate.component';
 import { OffreRecyclageUserADMINComponent } from 'src/app/pages/OffreRecyclage-UserADMIN/OffreRecyclage-UserADMIN.component';
+import { PayMembershipComponent } from 'src/app/pages/PayMembership/PayMembership.component';
 
 // export const AdminLayoutRoutes: Routes = [
 //     { path: 'dashboard',      component: DashboardComponent , canActivate: [AuthGuard],
@@ -69,6 +70,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'getMembershipByIdComponent/:id', component: GetMembershipByIdComponent },
   { path: 'getAllMembershipClient', component: GetAllMembershipClientComponent },
   { path: 'GetAllPaymentAdmin', component: GetAllPaymentAdminComponent },
+  { path: 'PayMembership/:id', component: PayMembershipComponent },
   { path: 'GetPaymentByIdComponent/:id', component: GetPaymentByIdComponent },
   { path: 'GetAllInvoiceAdminComponent', component: GetAllInvoiceAdminComponent },
   { path: 'GetAllInvoiceClient', component: GetAllInvoiceClientComponent },

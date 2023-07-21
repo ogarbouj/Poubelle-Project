@@ -127,10 +127,8 @@
   </div>
 
   <div class="container">
-    <!--
-      <div *ngFor="let p of offreRecyclage | filter:searchTerm" class="card">
-    -->
-    <div *ngFor="let p of offreRecyclage" class="card">
+
+    <div *ngFor="let p of offreRecyclage | filter:searchTerm" class="card">
       <div class="card-body">
         <h5 class="card-title">{{p.title}}</h5>
         <p class="card-text">{{p.type}}</p>

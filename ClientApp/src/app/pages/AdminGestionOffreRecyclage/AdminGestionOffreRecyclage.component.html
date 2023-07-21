@@ -1,5 +1,3 @@
-
-
 <br>
 <br>
 <br>
@@ -11,20 +9,22 @@
 <br>
 <br>
 <br>
-<br><!DOCTYPE html>
+<br>
+<!DOCTYPE html>
 <html>
+
 <head>
   <br>
   <br>
   <br>
   <br>
- <br>
   <br>
   <br>
   <br>
   <br>
   <br>
- <br>
+  <br>
+  <br>
   <br>
   <title>Champ de recherche stylisé</title>
   <style>
@@ -99,6 +99,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="search-container">
     <input type="text" placeholder="Rechercher" name="search" [(ngModel)]="searchTerm" class="search-input">
@@ -106,19 +107,17 @@
   </div>
 
   <div class="container">
-    <!--
-      <div *ngFor="let p of offreRecyclage | filter:searchTerm" class="card">
-    -->
-    <div *ngFor="let p of offreRecyclage" class="card">
+    <div *ngFor="let p of offreRecyclage | filter:searchTerm" class="card">
       <div class="card-body">
         <h5 class="card-title">{{p.title}}</h5>
         <p class="card-text">{{p.type}}</p>
         <p class="card-text">{{p.price}}</p>
         <p class="card-text">ID Poubelle: {{p.ListePoublelle}}</p>
         <a class="btn btn-danger" (click)="removeProduct(p)">Delete</a>
-        <a   class="btn btn-primary" [routerLink]="[ '/OffreRecyclageUserUpdate',p.id]" >Update Offer</a>
+        <a class="btn btn-primary" [routerLink]="[ '/OffreRecyclageUserUpdate',p.id]">Update Offer</a>
       </div>
     </div>
   </div>
 </body>
+
 </html>

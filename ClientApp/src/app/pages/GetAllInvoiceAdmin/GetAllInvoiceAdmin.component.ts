@@ -52,8 +52,8 @@ export class GetAllInvoiceAdminComponent implements OnInit {
     return new Array(i);
   }
 
-  getInvoiceById(membership: GetAllMemberItem){
-    this.router.navigateByUrl(`/GetInvoiceById/${membership.id}`);
+  getInvoiceById(invoice: GetAllInvoicesItem){
+    this.router.navigateByUrl(`/GetInvoiceById/${invoice.id}`);
   }
 
 }

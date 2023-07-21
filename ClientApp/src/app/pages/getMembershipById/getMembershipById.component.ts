@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MembershipService } from 'src/app/services/membership.service';
 
 @Component({
@@ -10,11 +10,19 @@ import { MembershipService } from 'src/app/services/membership.service';
 export class GetMembershipByIdComponent implements OnInit {
 
   data: any;
+  userRole: string = 'user';
 
-  constructor(private membershipServices: MembershipService, private route: ActivatedRoute) { }
+  constructor(private membershipServices: MembershipService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    console.log('User Role:', this.userRole);
     this.getmembershipById();
+  }
+
+  initRoles(){
+     /*
+      * Init User Role
+      */
   }
 
   getmembershipById() {
@@ -26,6 +34,10 @@ export class GetMembershipByIdComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  pay(){
+    this.router.navigateByUrl(`/PayMembership/${this.data.membership.id}`);
   }
 
 }
