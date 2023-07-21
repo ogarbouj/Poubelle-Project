@@ -51,4 +51,8 @@ export class PayMembershipComponent implements OnInit {
 
   }
 
+  openPaymentLink() {
+    window.open(this.paymentUrl, '_blank');
+  }
+
 }

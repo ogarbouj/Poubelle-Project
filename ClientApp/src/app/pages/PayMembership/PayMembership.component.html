@@ -18,11 +18,10 @@
 
 
         <div class="card-body">
+          If the link didn't load, please click here
+          <button type="button" class="btn btn-primary btn-sm" (click)="openPaymentLink()">Redirect</button>
 
-          <section>
-            <iframe [src]="paymentUrl" frameborder="5" width="100%" height="400"></iframe>
-          </section>
-
+          <iframe [sandbox]="'allow-scripts'" [src]="paymentUrl" frameborder="5" width="100%" height="400" onLoad="(() => console.log('Loaded'))()"></iframe>
 
           <!--
             <iframe [sandbox]="'allow-scripts'" src="https://konnect.network/gateway/pay?payment_ref=64bacb28fe20fafbfd6d7416" frameborder="5" width="100%" height="400"></iframe>
