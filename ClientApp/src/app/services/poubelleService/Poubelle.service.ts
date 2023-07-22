@@ -18,6 +18,11 @@ export class PoubelleService {
   fetchPoubelles(): Observable<Poubelle[]> {
     return this.http.get<Poubelle[]>(this.url);
   }
+  fetchPoubelleById(id: string): Observable<Poubelle> {
+    return this.http.get<Poubelle>(`${this.url}/${id}`);
+}
+
+  
 
   fetchPoubellesByType(type: string): Observable<Poubelle[]> {
     return this.http.get<Poubelle[]>(`${this.url}/type/${type}`);
