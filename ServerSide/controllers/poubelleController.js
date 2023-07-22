@@ -48,8 +48,8 @@ export function createPoubelle(req, res) {
     const poubelleId = req.params.id;
   
     Poubelle.findById(poubelleId)
-      .populate('idType', '-_id nom')
-      .populate('idZone', '-_id nom')
+      .populate('idType', '_id nom')  // Include _id and nom
+      .populate('idZone', '_id nom')  // Include _id and nom
       .lean()
       .exec()
       .then((poubelle) => {
@@ -60,8 +60,8 @@ export function createPoubelle(req, res) {
         const { _id, idType, idZone, ...rest } = poubelle;
         const transformedPoubelle = {
           ...rest,
-          type: { nom: idType.nom },
-          zone: { nom: idZone.nom },
+          idType: idType,
+          idZone: idZone,
         };
   
         res.status(200).json(transformedPoubelle);
@@ -70,6 +70,7 @@ export function createPoubelle(req, res) {
         res.status(500).json({ error: error.message });
       });
   }
+  
   
 
   export function updatePoubelle(req, res) {
@@ -164,11 +165,11 @@ export function createPoubelle(req, res) {
         const formattedPoubelles = poubelles.map((poubelle) => ({
           _id: poubelle._id,
           nom: poubelle.nom,
-          //capacite: poubelle.capacite,
-          //taille: poubelle.taille,
-          //statut: poubelle.statut,
+          capacite: poubelle.capacite,
+          taille: poubelle.taille,
+          statut: poubelle.statut,
           type: poubelle.idType,
-         // zone: poubelle.idZone,
+          zone: poubelle.idZone,
         }));
         res.status(200).json(formattedPoubelles);
       })
